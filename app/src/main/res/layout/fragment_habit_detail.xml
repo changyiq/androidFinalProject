@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin"
+    tools:context=".HabitDetailFragment">
+
+    <TextView
+        android:id="@+id/habit_name"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="132dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Exercise" />
+
+    <TextView
+        android:id="@+id/Habit_date_label"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/habit_name"
+        tools:text="@string/habit_date" />
+
+
+    <TextView
+        android:id="@+id/habit_time_label"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/habit_time"
+        app:layout_constraintBaseline_toBaselineOf="@+id/time_detail"
+        app:layout_constraintEnd_toStartOf="@+id/time_detail"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/date_detail"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Habit_date_label"
+        app:layout_constraintTop_toBottomOf="@+id/habit_name"
+        tools:text="2021-11-20" />
+
+    <TextView
+        android:id="@+id/time_detail"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/habit_time_label"
+        app:layout_constraintTop_toBottomOf="@+id/Habit_date_label"
+        tools:text="22:33:00" />
+
+
+    <Button
+        android:id="@+id/delete_habit"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time_detail" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/edit_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_between_elements"
+        android:layout_marginBottom="@dimen/margin_between_elements"
+        android:contentDescription="@string/edit_habit"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@android:color/white"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="382dp"
+        android:layout_height="105dp"
+        android:src="@drawable/fui_idp_button_background_facebook"
+        app:layout_constraintBottom_toTopOf="@+id/habit_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:contentDescription="TODO" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

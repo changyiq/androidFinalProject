@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="finalproject.stN991554423.org.MainFragment"
+        android:label="MainFragment" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="finalproject.stN991554423.org.LoginFragment"
+        android:label="LoginFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="finalproject.stN991554423.org.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>
