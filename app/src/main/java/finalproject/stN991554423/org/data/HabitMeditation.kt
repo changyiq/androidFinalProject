@@ -7,7 +7,7 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-class HabitMeditation(var meditationId: Int, var meditationDate: String, var meditationTime: String, var meditationDuration: Double): Serializable {
+class HabitMeditation(var userId: Int, var meditationDate: String, var meditationTime: String, var meditationDuration: Double): Serializable {
 
     constructor(): this(0,"", "", 0.0)
 
