@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
@@ -80,7 +81,9 @@ class MainFragment : Fragment() {
             when (authenticationState) {
                 LoginViewModel.AuthenticationState.AUTHENTICATED -> {
 
-                    binding.welcomeText.text = getFactWithPersonalization(factToDisplay)
+//                    binding.welcomeText.text = getFactWithPersonalization(factToDisplay)
+
+                    //view?.findNavController()?.navigate(R.id.action_mainFragment_to_habitListFragment)
 
                     binding.authButton.text = getString(R.string.logout_button_text)
                     binding.authButton.setOnClickListener {
@@ -129,3 +132,6 @@ class MainFragment : Fragment() {
         )
     }
 }
+
+
+

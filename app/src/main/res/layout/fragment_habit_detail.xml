@@ -8,11 +8,12 @@
     android:layout_margin="@dimen/margin"
     tools:context=".HabitDetailFragment">
 
+
     <TextView
         android:id="@+id/habit_name"
         style="@style/Widget.HabitTracker.TextView"
         android:layout_width="wrap_content"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="120dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Exercise" />
@@ -21,59 +22,80 @@
         android:id="@+id/Habit_date_label"
         style="@style/Widget.HabitTracker.TextView"
         android:layout_width="wrap_content"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="@dimen/margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/habit_name"
         tools:text="@string/habit_date" />
 
-
     <TextView
         android:id="@+id/habit_time_label"
         style="@style/Widget.HabitTracker.TextView"
         android:layout_width="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
         android:text="@string/habit_time"
-        app:layout_constraintBaseline_toBaselineOf="@+id/time_detail"
         app:layout_constraintEnd_toStartOf="@+id/time_detail"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/Habit_date_label" />
+
 
     <TextView
         android:id="@+id/date_detail"
         style="@style/Widget.HabitTracker.TextView"
-        android:layout_width="0dp"
+        android:layout_width="280dp"
+        android:layout_height="23dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="53dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toEndOf="@+id/Habit_date_label"
-        app:layout_constraintTop_toBottomOf="@+id/habit_name"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:text="2021-11-20" />
 
     <TextView
         android:id="@+id/time_detail"
         style="@style/Widget.HabitTracker.TextView"
-        android:layout_width="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="304dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/habit_time_label"
-        app:layout_constraintTop_toBottomOf="@+id/Habit_date_label"
+        app:layout_constraintTop_toBottomOf="@+id/date_detail"
         tools:text="22:33:00" />
 
+    <TextView
+        android:id="@+id/habit_content_label"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/habit_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/habit_time_label" />
+
+    <TextView
+        android:id="@+id/content_detail"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/habit_content_label"
+        app:layout_constraintTop_toBottomOf="@+id/time_detail"
+        tools:text="1 hour 30 min" />
 
     <Button
         android:id="@+id/delete_habit"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="76dp"
         android:text="@string/delete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/time_detail" />
+        app:layout_constraintTop_toBottomOf="@+id/content_detail" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/edit_item"
@@ -92,13 +114,13 @@
         android:id="@+id/imageView"
         android:layout_width="382dp"
         android:layout_height="105dp"
+        android:contentDescription="TODO"
         android:src="@drawable/fui_idp_button_background_facebook"
         app:layout_constraintBottom_toTopOf="@+id/habit_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:contentDescription="TODO" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,7 +34,6 @@
     <!--Habits list page -->
     <string name="habit">Habit</string>
     <string name="progress">Progress</string>
-    <string name="add_new_habit">Add new habit</string>
 
     <!-- Habit detail page -->
     <string name="habit_date">Date:</string>
@@ -42,6 +41,11 @@
     <string name="sell">Sell</string>
     <string name="delete">Delete</string>
     <string name="edit_habit">Edit Item</string>
+    <string name="habit_content">Duration: </string>
+
+    <!-- Habit add/edit page-->
+    <string name="add_new_habit">Add new habit</string>
+    <string name="save_action">save</string>
 
 
 </resources>
