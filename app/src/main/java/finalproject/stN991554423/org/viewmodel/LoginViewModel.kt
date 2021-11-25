@@ -11,17 +11,14 @@ import kotlin.random.Random
 class LoginViewModel : ViewModel() {
 
     companion object {
-        val androidFacts = arrayOf(
-            "not login 1",
-            "not login 2",
+        val encouragementQuotes = arrayOf(
+            "Everything you need to accomplish your goals is already in you.",
+            "Keep going, we're going to get through this together.",
+            "Be gentle with yourself. You’re doing the best you can!",
+            "I’m so proud of you. I just wanted to tell you in case no one has.",
+            "There’s something in you that the world needs."
         )
 
-        val californiaFacts = arrayOf(
-            "The most populated state in the United States is California",
-            "Three out of the ten largest U. S. cities are in California",
-            "The largest tree in the world can be found in California",
-            "California became a state in 1850"
-        )
     }
 
     enum class AuthenticationState {
@@ -36,17 +33,12 @@ class LoginViewModel : ViewModel() {
         }
     }
 
-    /**
-     * Gets a fact to display based on the user's set preference of which type of fact they want
-     * to see (Android fact or California fact). If there is no logged in user or if the user has
-     * not set a preference, defaults to showing Android facts.
-     */
-    fun getFactToDisplay(context: Context): String {
+    fun getQuotesToDisplay(context: Context): String {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val factTypePreferenceKey = context.getString(R.string.preference_fact_type_key)
-        val defaultFactType = context.resources.getStringArray(R.array.fact_type)[0]
-        val funFactType = sharedPreferences.getString(factTypePreferenceKey, defaultFactType)
+        val quoteTypePreferenceKey = context.getString(R.string.preference_quotes_key)
+        val defaultQuoteType = context.resources.getStringArray(R.array.quotes_type)[0]
+        val quotesType = sharedPreferences.getString(quoteTypePreferenceKey, defaultQuoteType)
 
-        return androidFacts[Random.nextInt(0, androidFacts.size)]
+        return encouragementQuotes[Random.nextInt(0, encouragementQuotes.size)]
     }
 }

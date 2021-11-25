@@ -4,14 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
@@ -19,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import finalproject.stN991554423.org.databinding.FragmentMainBinding
 import finalproject.stN991554423.org.viewmodel.LoginViewModel
 
-class MainFragment : Fragment() {
+open class MainFragment : Fragment() {
 
     companion object {
         const val TAG = "MainFragment"
@@ -35,13 +34,13 @@ class MainFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
 
-        // TODO Remove the two lines below once observeAuthenticationState is implemented.
-        binding.welcomeText.text = viewModel.getFactToDisplay(requireContext())
 
-        binding.authButton.text = getString(R.string.login_btn)
 
         return binding.root
     }
+
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,6 +48,8 @@ class MainFragment : Fragment() {
 
         binding.authButton.setOnClickListener { launchSignInFlow() }
     }
+
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -75,7 +76,7 @@ class MainFragment : Fragment() {
      * If there is no logged in user: show a login button
      */
     private fun observeAuthenticationState() {
-        val factToDisplay = viewModel.getFactToDisplay(requireContext())
+        val factToDisplay = viewModel.getQuotesToDisplay(requireContext())
 
         viewModel.authenticationState.observe(viewLifecycleOwner, Observer { authenticationState ->
             when (authenticationState) {
@@ -83,7 +84,7 @@ class MainFragment : Fragment() {
 
 //                    binding.welcomeText.text = getFactWithPersonalization(factToDisplay)
 
-                    //view?.findNavController()?.navigate(R.id.action_mainFragment_to_habitListFragment)
+                    view?.findNavController()?.navigate(R.id.action_mainFragment_to_habitListFragment)
 
                     binding.authButton.text = getString(R.string.logout_button_text)
                     binding.authButton.setOnClickListener {
@@ -103,12 +104,13 @@ class MainFragment : Fragment() {
     }
 
 
-    private fun getFactWithPersonalization(fact: String): String {
+
+    private fun getFactWithPersonalization(quote: String): String {
         return String.format(
             resources.getString(
                 R.string.welcome_message_authed,
                 FirebaseAuth.getInstance().currentUser?.displayName,
-                Character.toLowerCase(fact[0]) + fact.substring(1)
+                Character.toLowerCase(quote[0]) + quote.substring(1)
             )
         )
     }

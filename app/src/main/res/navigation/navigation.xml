@@ -11,16 +11,16 @@
         android:label="MainFragment" >
         <action
             android:id="@+id/action_mainFragment_to_habitListFragment"
-            app:destination="@id/habitListFragment" />
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="finalproject.stN991554423.org.LoginFragment"
         android:label="LoginFragment" />
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="finalproject.stN991554423.org.SettingsFragment"
-        android:label="SettingsFragment" />
+<!--    <fragment-->
+<!--        android:id="@+id/settingsFragment"-->
+<!--        android:name="finalproject.stN991554423.org.SettingsFragment"-->
+<!--        android:label="SettingsFragment" />-->
     <fragment
         android:id="@+id/habitListFragment"
         android:name="finalproject.stN991554423.org.HabitListFragment"
@@ -48,6 +48,6 @@
         android:label="AddHabitFragment" >
         <action
             android:id="@+id/action_addHabitFragment_to_habitListFragment"
-            app:destination="@id/habitListFragment" />
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>
