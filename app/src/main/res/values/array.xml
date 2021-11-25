@@ -18,8 +18,5 @@
 <resources>
     <array name="quotes_type">
         <item>@string/quote_type</item>
-        <!--
-        <item>@string/fact_type_california</item>
-        -->
     </array>
 </resources>

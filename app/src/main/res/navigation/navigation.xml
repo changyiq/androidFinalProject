@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/MainFragment">
 
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/MainFragment"
         android:name="finalproject.stN991554423.org.fragment.MainFragment"
         android:label="MainFragment">
         <action
@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_habitListFragment_to_habitDetailFragment"
             app:destination="@id/habitDetailFragment" />
+        <action
+            android:id="@+id/action_habitListFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
     </fragment>
     <fragment
         android:id="@+id/habitDetailFragment"

@@ -37,8 +37,8 @@ class MainFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
 
         // TODO Remove the two lines below once observeAuthenticationState is implemented.
-        binding.welcomeText.text = viewModel.getQuotesToDisplay(requireContext())
-
+        //binding.welcomeText.text = viewModel.getQuotesToDisplay(requireContext())
+        binding.welcomeText.text = "Hi there! "
         binding.authButton.text = getString(R.string.login_btn)
 
         return binding.root
@@ -76,60 +76,62 @@ class MainFragment : Fragment() {
      * If there is no logged in user: show a login button
      */
     private fun observeAuthenticationState() {
-        val factToDisplay = viewModel.getQuotesToDisplay(requireContext())
+        val quoteToDisplay = viewModel.getQuotesToDisplay(requireContext())
 
         viewModel.authenticationState.observe(viewLifecycleOwner, Observer { authenticationState ->
             when (authenticationState) {
                 LoginViewModel.AuthenticationState.AUTHENTICATED -> {
+                    val action = MainFragmentDirections.actionMainFragmentToHabitListFragment(
+                    )
+                    this.findNavController().navigate(action)
+//                    binding.welcomeText.text = getQuoteWithPersonalization(quoteToDisplay)
+//
+//                    binding.authButton.text = getString(R.string.view_list_button_text)
+//                    binding.authButton.setOnClickListener {
+//                        val action = MainFragmentDirections.actionMainFragmentToHabitListFragment(
+//                        )
+//                        this.findNavController().navigate(action)
+//                    }
+                }
+                    else -> {
+                        binding.welcomeText.text = quoteToDisplay
 
-                    binding.welcomeText.text = getFactWithPersonalization(factToDisplay)
-
-                    binding.authButton.text = getString(R.string.view_list_button_text)
-                    binding.authButton.setOnClickListener {
-                        val action = MainFragmentDirections.actionMainFragmentToHabitListFragment(
-                        )
-                        this.findNavController().navigate(action)
+                        binding.authButton.text = getString(R.string.login_button_text)
+                        binding.authButton.setOnClickListener {
+                            launchSignInFlow()
+                        }
                     }
                 }
-                else -> {
-                    binding.welcomeText.text = factToDisplay
-
-                    binding.authButton.text = getString(R.string.login_button_text)
-                    binding.authButton.setOnClickListener {
-                        launchSignInFlow()
-                    }
-                }
-            }
-        })
-    }
+            })
+        }
 
 
-    private fun getFactWithPersonalization(fact: String): String {
-        return String.format(
-            resources.getString(
-                R.string.welcome_message_authed,
-                FirebaseAuth.getInstance().currentUser?.displayName,
-                Character.toLowerCase(fact[0]) + fact.substring(1)
+                private fun getQuoteWithPersonalization(quote: String): String {
+            return String.format(
+                resources.getString(
+                    R.string.welcome_message_authed,
+                    FirebaseAuth.getInstance().currentUser?.displayName,
+                    quote.substring(0)
+                )
             )
-        )
-    }
+        }
 
-    private fun launchSignInFlow() {
-        // Give users the option to sign in / register with their email
-        // If users choose to register with their email,
-        // they will need to create a password as well
-        val providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build()
-            //
-        )
+                private fun launchSignInFlow() {
+            // Give users the option to sign in / register with their email
+            // If users choose to register with their email,
+            // they will need to create a password as well
+            val providers = arrayListOf(
+                AuthUI.IdpConfig.EmailBuilder().build()
+                //
+            )
 
-        // Create and launch sign-in intent.
-        // We listen to the response of this activity with the
-        // SIGN_IN_RESULT_CODE code
-        startActivityForResult(
-            AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(
-                providers
-            ).build(), SIGN_IN_RESULT_CODE
-        )
+            // Create and launch sign-in intent.
+            // We listen to the response of this activity with the
+            // SIGN_IN_RESULT_CODE code
+            startActivityForResult(
+                AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(
+                    providers
+                ).build(), SIGN_IN_RESULT_CODE
+            )
+        }
     }
-}

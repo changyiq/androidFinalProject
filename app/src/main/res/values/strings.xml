@@ -19,7 +19,7 @@
     <string name="login_unsuccessful_msg">Login unsuccessful</string>
 
     <string name="welcome_message">It\'s currently %1$s.</string>
-    <string name="welcome_message_authed">Hi %1$s! Did you know that %2$s.</string>
+    <string name="welcome_message_authed">Hi %1$s! \n %2$s</string>
 
 
     <string name="login_btn">Login</string>

@@ -2,15 +2,16 @@ package finalproject.stN991554423.org.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.firebase.ui.auth.AuthUI
+import com.google.firebase.auth.FirebaseAuth
+import finalproject.stN991554423.org.R
 import finalproject.stN991554423.org.data.FirestoreRepository
 import finalproject.stN991554423.org.data.HabitRun
 import finalproject.stN991554423.org.databinding.HabitListFragmentBinding
@@ -19,6 +20,7 @@ import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
 import finalproject.stN991554423.org.viewmodel.HabitListViewModel
 
 const val TAG = "FIRESTORE"
+
 class HabitListFragment : Fragment() {
 
     companion object {
@@ -43,6 +45,9 @@ class HabitListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = HabitListFragmentBinding.inflate(inflater, container, false)
+
+        setHasOptionsMenu(true)
+
         return binding.root
     }
 
@@ -50,13 +55,13 @@ class HabitListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
         binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = firestoreViewModel.getAllHabitRun()?.let {it->
+        binding.recyclerView.adapter = firestoreViewModel.getAllHabitRun()?.let { it ->
             HabitRunRecyclerView(it)
         }
 
 
         // button click event to trigger database data fetching
-        binding.btnRun.setOnClickListener{
+        binding.btnRun.setOnClickListener {
             var list = firestoreViewModel.getAllHabitRun()
 //            firestoreRepository!!.getRunCollection()
 //                .get()
@@ -105,7 +110,6 @@ class HabitListFragment : Fragment() {
     }
 
 
-
 //    // repeat the rows and get the list
 //    private fun generateDummyList(size: Int): List<HabitRun> {
 //        val list = ArrayList<HabitRun>()
@@ -121,10 +125,39 @@ class HabitListFragment : Fragment() {
 //        return list
 //    }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_logout -> {
+                logout()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HabitListViewModel::class.java)
 
     }
 
+    fun logout() {
+
+        val action = HabitListFragmentDirections.actionHabitListFragmentToMainFragment()
+
+        this.findNavController().navigate(action)
+        FirebaseAuth.getInstance().signOut()
+    }
 }
+
+
+
+
+
+
+
+
