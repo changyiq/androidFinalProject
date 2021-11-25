@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/margin"
-    tools:context=".HabitDetailFragment">
+    tools:context=".fragment.HabitDetailFragment">
 
     <TextView
-        android:id="@+id/habit_name"
+        android:id="@+id/user_id"
         style="@style/Widget.HabitTracker.TextView"
         android:layout_width="wrap_content"
         android:layout_marginTop="132dp"
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_marginTop="@dimen/margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/habit_name"
+        app:layout_constraintTop_toBottomOf="@+id/user_id"
         tools:text="@string/habit_date" />
 
 
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/Habit_date_label"
-        app:layout_constraintTop_toBottomOf="@+id/habit_name"
+        app:layout_constraintTop_toBottomOf="@+id/user_id"
         tools:text="2021-11-20" />
 
     <TextView
@@ -92,8 +92,8 @@
         android:id="@+id/imageView"
         android:layout_width="382dp"
         android:layout_height="105dp"
-        android:src="@drawable/fui_idp_button_background_facebook"
-        app:layout_constraintBottom_toTopOf="@+id/habit_name"
+        app:srcCompat="@drawable/fui_ic_check_circle_black_128dp"
+        app:layout_constraintBottom_toTopOf="@+id/user_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

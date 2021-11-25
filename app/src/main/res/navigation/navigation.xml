@@ -1,19 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="finalproject.stN991554423.org.MainFragment"
-        android:label="MainFragment" />
+        android:name="finalproject.stN991554423.org.fragment.MainFragment"
+        android:label="MainFragment">
+        <action
+            android:id="@+id/action_mainFragment_to_habitListFragment"
+            app:destination="@id/habitListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="finalproject.stN991554423.org.LoginFragment"
+        android:name="finalproject.stN991554423.org.fragment.LoginFragment"
         android:label="LoginFragment" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="finalproject.stN991554423.org.SettingsFragment"
+        android:name="finalproject.stN991554423.org.fragment.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/habitListFragment"
+        android:name="finalproject.stN991554423.org.fragment.HabitListFragment"
+        android:label="habit_list_fragment"
+        tools:layout="@layout/habit_list_fragment">
+        <action
+            android:id="@+id/action_habitListFragment_to_addHabitFragment"
+            app:destination="@id/addHabitFragment" />
+        <action
+            android:id="@+id/action_habitListFragment_to_habitDetailFragment"
+            app:destination="@id/habitDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/habitDetailFragment"
+        android:name="finalproject.stN991554423.org.fragment.HabitDetailFragment"
+        android:label="fragment_habit_detail"
+        tools:layout="@layout/fragment_habit_detail" >
+        <action
+            android:id="@+id/action_habitDetailFragment_to_addHabitFragment"
+            app:destination="@id/addHabitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addHabitFragment"
+        android:name="finalproject.stN991554423.org.fragment.AddHabitFragment"
+        android:label="AddHabitFragment"
+        tools:layout="@layout/fragment_add_habit">
+        <action
+            android:id="@+id/action_addHabitFragment_to_habitListFragment"
+            app:destination="@id/habitListFragment" />
+    </fragment>
 </navigation>

@@ -42,10 +42,10 @@
             android:id="@+id/welcome_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="36dp"
             android:padding="@dimen/text_padding"
             android:textAlignment="center"
-            android:textSize="36sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/fui_idp_button_background_facebook" />
+            app:srcCompat="@drawable/fui_ic_check_circle_black_128dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

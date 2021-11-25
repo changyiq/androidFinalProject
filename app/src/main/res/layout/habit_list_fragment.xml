@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/margin"
-    tools:context=".HabitListFragment">
+    tools:context=".fragment.HabitListFragment">
 
     <Button
         android:id="@+id/btnYoga"
@@ -31,7 +31,7 @@
 
 
     <TextView
-        android:id="@+id/habit_name"
+        android:id="@+id/user_id"
         style="@style/Widget.HabitTracker.Header"
         android:layout_width="128dp"
         android:layout_height="20dp"
@@ -46,14 +46,14 @@
     <TextView
         android:id="@+id/progress"
         style="@style/Widget.HabitTracker.Header"
-        android:layout_below="@+id/habit_name"
+        android:layout_below="@+id/user_id"
         android:layout_marginStart="@dimen/margin_between_elements"
         android:text="@string/progress"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/habit_name"
+        app:layout_constraintBottom_toBottomOf="@+id/user_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/habit_name"
+        app:layout_constraintStart_toEndOf="@+id/user_id"
         app:layout_constraintTop_toBottomOf="@+id/btnRun"
         app:layout_constraintVertical_bias="0.941" />
 

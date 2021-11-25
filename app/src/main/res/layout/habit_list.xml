@@ -18,53 +18,67 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/habit_name"
+            android:id="@+id/user_id"
             style="@style/Widget.HabitTracker.HabitItemTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="sans-serif"
-            android:text="Exercise"
-            app:layout_constraintEnd_toStartOf="@+id/item_price"
+            android:text="12038320"
+            app:layout_constraintEnd_toStartOf="@+id/habit_field_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/item_price"
+            android:id="@+id/habit_field_1"
             style="@style/Widget.HabitTracker.HabitItemTextView"
-            android:layout_width="62dp"
-            android:layout_height="32dp"
-            android:layout_below="@+id/habit_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="-26dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="180dp"
 
-            android:layout_marginEnd="234dp"
-            android:layout_toEndOf="@+id/habit_name"
+            android:layout_toEndOf="@+id/user_id"
             android:fontFamily="sans-serif-medium"
-            android:text="$4.99"
+            android:text="2021-11-22"
             android:textAlignment="center"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/habit_name"
+            app:layout_constraintEnd_toStartOf="@+id/habit_field_2"
+            app:layout_constraintStart_toEndOf="@+id/user_id"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="157dp"
+        <TextView
+            android:id="@+id/habit_field_2"
+            style="@style/Widget.HabitTracker.HabitItemTextView"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="-147dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="48dp"
-            android:layout_toEndOf="@+id/item_price"
+            android:layout_marginEnd="100dp"
+
+            android:fontFamily="sans-serif-medium"
+            android:text="20:00"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@+id/habit_field_3"
+            app:layout_constraintStart_toEndOf="@+id/habit_field_1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/habit_field_3"
+            style="@style/Widget.HabitTracker.HabitItemTextView"
+            android:layout_width="62dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="50dp"
+
+            android:fontFamily="sans-serif-medium"
+            android:text="1.9"
+            android:textAlignment="center"
             app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/habit_field_2"
             app:layout_constraintTop_toTopOf="parent" />
 
 
