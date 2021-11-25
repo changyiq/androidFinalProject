@@ -7,7 +7,7 @@ buildscript {
         core_ktx_version = '1.7.0'
         coroutines_version = '1.4.2'
         kotlin_version = '1.5.20'
-        lifecycle_version = '2.3.1'
+        lifecycle_version = '2.4.0'
         material_version = '1.4.0'
         nav_version = '2.3.5'
     }

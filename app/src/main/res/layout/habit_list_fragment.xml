@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,31 +7,55 @@
     android:layout_margin="@dimen/margin"
     tools:context=".HabitListFragment">
 
+    <Button
+        android:id="@+id/btnYoga"
+        android:layout_width="55dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:text="Yoga"
+        android:textSize="6sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRun"
+        app:layout_constraintStart_toEndOf="@+id/btnSleep"
+        app:layout_constraintTop_toTopOf="@+id/btnRun" />
+
+    <Button
+        android:id="@+id/btnSleep"
+        android:layout_width="55dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:text="Sleep"
+        android:textSize="6sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRun"
+        app:layout_constraintStart_toEndOf="@+id/btnReading"
+        app:layout_constraintTop_toTopOf="@+id/btnRun" />
+
+
     <TextView
         android:id="@+id/habit_name"
         style="@style/Widget.HabitTracker.Header"
         android:layout_width="128dp"
         android:layout_height="20dp"
         android:layout_marginStart="@dimen/margin_between_elements"
+        android:layout_marginTop="16dp"
         android:text="@string/habit"
         app:layout_constraintEnd_toStartOf="@+id/progress"
         app:layout_constraintHorizontal_weight="2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRun" />
 
     <TextView
         android:id="@+id/progress"
         style="@style/Widget.HabitTracker.Header"
         android:layout_below="@+id/habit_name"
         android:layout_marginStart="@dimen/margin_between_elements"
-        android:layout_marginTop="8dp"
         android:text="@string/progress"
         android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/habit_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/habit_name"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/btnRun"
+        app:layout_constraintVertical_bias="0.941" />
 
     <View
         android:id="@+id/divider"
@@ -45,15 +68,16 @@
         app:layout_constraintTop_toBottomOf="@+id/progress" />
 
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" >
+        app:layout_constraintTop_toBottomOf="@+id/divider">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -68,5 +92,50 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@android:color/white" />
+
+    <Button
+        android:id="@+id/btnRun"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:text="Run"
+        android:textSize="6sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/btnDrinking"
+        android:layout_width="55dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:text="Drinking"
+        android:textSize="6sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRun"
+        app:layout_constraintStart_toEndOf="@+id/btnRun"
+        app:layout_constraintTop_toTopOf="@+id/btnRun" />
+
+    <Button
+        android:id="@+id/btnMeditation"
+        android:layout_width="55dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:text="Meditation"
+        android:textSize="6sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRun"
+        app:layout_constraintStart_toEndOf="@+id/btnDrinking"
+        app:layout_constraintTop_toTopOf="@+id/btnRun" />
+
+    <Button
+        android:id="@+id/btnReading"
+        android:layout_width="55dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:text="Reading"
+        android:textSize="6sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRun"
+        app:layout_constraintStart_toEndOf="@+id/btnMeditation"
+        app:layout_constraintTop_toTopOf="@+id/btnRun" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
