@@ -125,6 +125,11 @@ class HabitListFragment : Fragment() {
                 logout()
                 true
             }
+            // only for test
+            R.id.action_detail->{
+                checkDeatil()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -141,6 +146,12 @@ class HabitListFragment : Fragment() {
 
         this.findNavController().navigate(action)
         FirebaseAuth.getInstance().signOut()
+    }
+
+    fun checkDeatil(){
+        val action = HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment()
+
+        this.findNavController().navigate(action)
     }
 }
 
