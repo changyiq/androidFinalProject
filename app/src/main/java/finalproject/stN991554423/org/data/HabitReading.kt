@@ -12,18 +12,20 @@ class HabitReading(var userId: Int, var readingDate: String, var readingTime: St
 
     constructor(): this(0,"", "", 0.0)
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getReadingDate(): LocalDate {
-        var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
-        var date = LocalDate.parse(readingDate, formatter)
+    @JvmName("getReadingDate1")
+    fun getReadingDate(): String {
+//        var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
+//        var date = LocalDate.parse(readingDate, formatter)
+        var date = readingDate
 
         return date
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getReadingTime(): LocalTime {
-        var formatter = DateTimeFormatter.ofPattern("hh:mm:ss")
-        var time = LocalTime.parse(readingTime, formatter)
+    @JvmName("getReadingTime1")
+    fun getReadingTime(): String {
+//        var formatter = DateTimeFormatter.ofPattern("hh:mm:ss")
+//        var time = LocalTime.parse(readingTime, formatter)
+        var time = readingTime
 
         return  time
     }
