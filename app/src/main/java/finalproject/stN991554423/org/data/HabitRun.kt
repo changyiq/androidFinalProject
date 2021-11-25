@@ -10,18 +10,21 @@ class HabitRun(var userId: Int, var runDate: String, var runTime: String, var ru
 
     constructor(): this(0,"", "", 0.0)
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getRunDate(): LocalDate {
-        var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
-        var date = LocalDate.parse(runDate, formatter)
+    @JvmName("getRunDate1")
+    fun getRunDate(): String {
+//        var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
+//        var date = LocalDate.parse(runDate, formatter)
+
+        var date = runDate
 
         return date
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getRunTime(): LocalTime {
-        var formatter = DateTimeFormatter.ofPattern("hh:mm:ss")
-        var time = LocalTime.parse(runTime, formatter)
+    @JvmName("getRunTime1")
+    fun getRunTime(): String {
+//        var formatter = DateTimeFormatter.ofPattern("hh:mm:ss")
+//        var time = LocalTime.parse(runTime, formatter)
+        var time = runTime
 
         return  time
     }

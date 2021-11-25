@@ -1,9 +1,10 @@
-package finalproject.stN991554423.org
+package finalproject.stN991554423.org.fragment
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.preference.PreferenceFragmentCompat
+import finalproject.stN991554423.org.R
 import finalproject.stN991554423.org.viewmodel.LoginViewModel
 
 class SettingsFragment : PreferenceFragmentCompat() {

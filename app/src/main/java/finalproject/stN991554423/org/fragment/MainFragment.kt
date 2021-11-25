@@ -1,4 +1,4 @@
-package finalproject.stN991554423.org
+package finalproject.stN991554423.org.fragment
 
 import android.app.Activity
 import android.content.Intent
@@ -11,10 +11,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
+import finalproject.stN991554423.org.R
 import finalproject.stN991554423.org.databinding.FragmentMainBinding
 import finalproject.stN991554423.org.viewmodel.LoginViewModel
 
@@ -82,9 +84,11 @@ class MainFragment : Fragment() {
 
                     binding.welcomeText.text = getFactWithPersonalization(factToDisplay)
 
-                    binding.authButton.text = getString(R.string.logout_button_text)
+                    binding.authButton.text = getString(R.string.view_list_button_text)
                     binding.authButton.setOnClickListener {
-                        AuthUI.getInstance().signOut(requireContext())
+                        val action = MainFragmentDirections.actionMainFragmentToHabitListFragment(
+                        )
+                        this.findNavController().navigate(action)
                     }
                 }
                 else -> {
@@ -125,7 +129,7 @@ class MainFragment : Fragment() {
         startActivityForResult(
             AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(
                 providers
-            ).build(), MainFragment.SIGN_IN_RESULT_CODE
+            ).build(), SIGN_IN_RESULT_CODE
         )
     }
 }
