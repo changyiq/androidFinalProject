@@ -15,6 +15,7 @@ import finalproject.stN991554423.org.R
 import finalproject.stN991554423.org.data.FirestoreRepository
 import finalproject.stN991554423.org.data.HabitRun
 import finalproject.stN991554423.org.databinding.HabitListFragmentBinding
+import finalproject.stN991554423.org.recyclerView.HabitDrinkingRecyclerView
 import finalproject.stN991554423.org.recyclerView.HabitRunRecyclerView
 import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
 import finalproject.stN991554423.org.viewmodel.HabitListViewModel
@@ -53,37 +54,26 @@ class HabitListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = firestoreViewModel.getAllHabitRun()?.let { it ->
-            HabitRunRecyclerView(it)
-        }
+//        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
+//        binding.recyclerView.setHasFixedSize(true)
+//        binding.recyclerView.adapter = firestoreViewModel.getAllHabitRun()?.let { it ->
+//            HabitRunRecyclerView(it)
+//        }
 
 
         // button click event to trigger database data fetching
         binding.btnRun.setOnClickListener {
-            var list = firestoreViewModel.getAllHabitRun()
-//            firestoreRepository!!.getRunCollection()
-//                .get()
-//                .addOnCompleteListener {
-//                    //val result: StringBuffer = StringBuffer()
-//                    if (it.isSuccessful) {
-//                        for (document in it.result!!) {
-//                            val item = HabitRun(
-//                                document.data.getValue("userId") as Int,
-//                                document.data.getValue("runDate") as String,
-//                                document.data.getValue("runTime") as String,
-//                                document.data.getValue("runDistance") as Double)
-//                            list += item
-//                        }
-//                        binding.recyclerView.adapter = HabitRunRecyclerView(list)
-//                    }
-//                }
+            val list = firestoreViewModel.getAllHabitRun()
+            binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
+            binding.recyclerView.setHasFixedSize(true)
             binding.recyclerView.adapter = list?.let { it1 -> HabitRunRecyclerView(it1) }
         }
 
         binding.btnDrinking.setOnClickListener {
-
+            val list = firestoreViewModel.getAllHabitDrinking()
+            binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
+            binding.recyclerView.setHasFixedSize(true)
+            binding.recyclerView.adapter = list?.let { it2 -> HabitDrinkingRecyclerView(it2) }
         }
 
         binding.btnMeditation.setOnClickListener {

@@ -12,10 +12,11 @@ class HabitDrinking(var userId: Int, var drinkingDate: String, var drinkingFrequ
 
     constructor(): this(0,"", 0, 0.0)
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getDrinkingDate(): LocalDate {
-        var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
-        var date = LocalDate.parse(drinkingDate, formatter)
+    @JvmName("getDrinkingDate1")
+    fun getDrinkingDate(): String {
+//        var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
+//        var date = LocalDate.parse(drinkingDate, formatter)
+        var date = drinkingDate
 
         return date
     }

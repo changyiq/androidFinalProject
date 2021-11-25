@@ -11,18 +11,20 @@ class HabitMeditation(var userId: Int, var meditationDate: String, var meditatio
 
     constructor(): this(0,"", "", 0.0)
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getMeditationDate(): LocalDate {
-        var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
-        var date = LocalDate.parse(meditationDate, formatter)
+    @JvmName("getMeditationDate1")
+    fun getMeditationDate(): String {
+//        var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
+//        var date = LocalDate.parse(meditationDate, formatter)
+        var date = meditationDate
 
         return date
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getMeditationTime(): LocalTime {
-        var formatter = DateTimeFormatter.ofPattern("hh:mm:ss")
-        var time = LocalTime.parse(meditationTime, formatter)
+    @JvmName("getMeditationTime1")
+    fun getMeditationTime(): String {
+//        var formatter = DateTimeFormatter.ofPattern("hh:mm:ss")
+//        var time = LocalTime.parse(meditationTime, formatter)
+        var time = meditationTime
 
         return  time
     }

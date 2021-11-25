@@ -12,19 +12,20 @@ class HabitSleep(var userId: Int, var sleepDate: String, var sleepTime: String, 
 
     constructor(): this(0,"", "", 0.0)
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getSleepDate(): LocalDate {
-        var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
-        var date = LocalDate.parse(sleepDate, formatter)
+    @JvmName("getSleepDate1")
+    fun getSleepDate(): String {
+//        var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
+//        var date = LocalDate.parse(sleepDate, formatter)
+        var date = sleepDate
 
         return date
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getSleepTime(): LocalTime {
-        var formatter = DateTimeFormatter.ofPattern("hh:mm:ss")
-        var time = LocalTime.parse(sleepTime, formatter)
-
+    @JvmName("getSleepTime1")
+    fun getSleepTime(): String {
+//        var formatter = DateTimeFormatter.ofPattern("hh:mm:ss")
+//        var time = LocalTime.parse(sleepTime, formatter)
+        var time = sleepTime
         return  time
     }
 
