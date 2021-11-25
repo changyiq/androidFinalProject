@@ -27,10 +27,11 @@
     <string name="settings_fact_type_title">Fun Fact Type</string>
 
     <string name="fact_type_android">Android</string>
+    <string name="quote_type">Encouragement Quotes</string>
     <string name="fact_type_california">California</string>
 
     <!--Shared Preference Keys -->
-    <string name="preference_fact_type_key">fact_type_pref</string>
+    <string name="preference_quotes_key">quotes_pref</string>
 
     <!--Action Button-->
     <string name="action_save">Save</string>

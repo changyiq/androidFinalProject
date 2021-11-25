@@ -37,7 +37,7 @@ class MainFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
 
         // TODO Remove the two lines below once observeAuthenticationState is implemented.
-        binding.welcomeText.text = viewModel.getFactToDisplay(requireContext())
+        binding.welcomeText.text = viewModel.getQuotesToDisplay(requireContext())
 
         binding.authButton.text = getString(R.string.login_btn)
 
@@ -76,7 +76,7 @@ class MainFragment : Fragment() {
      * If there is no logged in user: show a login button
      */
     private fun observeAuthenticationState() {
-        val factToDisplay = viewModel.getFactToDisplay(requireContext())
+        val factToDisplay = viewModel.getQuotesToDisplay(requireContext())
 
         viewModel.authenticationState.observe(viewLifecycleOwner, Observer { authenticationState ->
             when (authenticationState) {
