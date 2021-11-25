@@ -30,8 +30,8 @@
             android:id="@+id/habit_type_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Habit Type Select..."
             android:layout_marginTop="@dimen/margin"
+            android:hint="Habit Type Select..."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -60,17 +60,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/habit_type_label">
 
-            <TextView
-                android:id="@+id/tv_attr_1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Attr1" />
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/habitAttr1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="37dp"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
                 tools:ignore="SpeakableTextPresentCheck" />
@@ -87,17 +80,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/habitAttr1Label">
 
-            <TextView
-                android:id="@+id/tv_attr_2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Attr2" />
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/habitAttr2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="39dp"
                 android:layout_weight="1"
                 android:inputType="number"
                 android:singleLine="true"
@@ -116,17 +102,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/habitAttr2Label">
 
-            <TextView
-                android:id="@+id/tv_attr_3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Attr3" />
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/habitAttr3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="39dp"
                 android:layout_weight="1"
                 android:inputType="number"
                 android:singleLine="true"
@@ -144,6 +123,38 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/habitAttr3Label" />
+
+        <TextView
+            android:id="@+id/tv_attr_1"
+            android:layout_width="374dp"
+            android:layout_height="29dp"
+            android:layout_weight="1"
+            android:text="Attr1"
+            app:layout_constraintBottom_toTopOf="@+id/habitAttr1Label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/habit_type_label" />
+
+        <TextView
+            android:id="@+id/tv_attr_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Attr2"
+            app:layout_constraintBottom_toTopOf="@+id/habitAttr2Label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/habitAttr1Label" />
+
+        <TextView
+            android:id="@+id/tv_attr_3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Attr3"
+            app:layout_constraintBottom_toTopOf="@+id/habitAttr3Label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/habitAttr2Label" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
