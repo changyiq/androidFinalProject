@@ -7,8 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import finalproject.stN991554423.org.R
 import finalproject.stN991554423.org.databinding.FragmentAddHabitBinding
 import finalproject.stN991554423.org.recyclerView.HabitRunRecyclerView
 
@@ -22,7 +26,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [AddHabitFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AddHabitFragment : Fragment() {
+class AddHabitFragment : Fragment(), AdapterView.OnItemSelectedListener  {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -32,6 +36,8 @@ class AddHabitFragment : Fragment() {
     // when the view hierarchy is attached to the fragment
     private var _binding: FragmentAddHabitBinding? = null
     private val binding get() = _binding!!
+    val spinner: Spinner = binding.habitType
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +53,26 @@ class AddHabitFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentAddHabitBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //----------------------------------|||||||
+        this.context?.let {
+            ArrayAdapter.createFromResource(
+                it,
+                R.array.habit_array,
+                android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                // Specify the layout to use when the list of choices appears
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                // Apply the adapter to the spinner
+                spinner.adapter = adapter
+            }
+        }
+        //---------------------------------||||||||
 
         binding.saveAction.setOnClickListener {
             val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment(
@@ -59,6 +80,7 @@ class AddHabitFragment : Fragment() {
             this.findNavController().navigate(action)
         }
     }
+
 
 
     /**
@@ -91,5 +113,13 @@ class AddHabitFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 }

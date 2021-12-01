@@ -40,6 +40,16 @@
     <string name="progress">Progress</string>
     <string name="add_new_habit">Add new habit</string>
 
+    <!--Spinner declaration-->
+    <string-array name="habit_array">
+        <item>Run</item>
+        <item>Drinking</item>
+        <item>Meditation</item>
+        <item>Reading</item>
+        <item>Sleep</item>
+        <item>Yoga</item>
+    </string-array>
+
     <!-- Habit detail page -->
     <string name="habit_date">Date:</string>
     <string name="habit_time">Time:</string>

@@ -15,8 +15,7 @@ import finalproject.stN991554423.org.R
 import finalproject.stN991554423.org.data.FirestoreRepository
 import finalproject.stN991554423.org.data.HabitRun
 import finalproject.stN991554423.org.databinding.HabitListFragmentBinding
-import finalproject.stN991554423.org.recyclerView.HabitDrinkingRecyclerView
-import finalproject.stN991554423.org.recyclerView.HabitRunRecyclerView
+import finalproject.stN991554423.org.recyclerView.*
 import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
 import finalproject.stN991554423.org.viewmodel.HabitListViewModel
 
@@ -54,42 +53,39 @@ class HabitListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
-//        binding.recyclerView.setHasFixedSize(true)
-//        binding.recyclerView.adapter = firestoreViewModel.getAllHabitRun()?.let { it ->
-//            HabitRunRecyclerView(it)
-//        }
+        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
+        binding.recyclerView.setHasFixedSize(true)
 
 
         // button click event to trigger database data fetching
         binding.btnRun.setOnClickListener {
             val list = firestoreViewModel.getAllHabitRun()
-            binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
-            binding.recyclerView.setHasFixedSize(true)
             binding.recyclerView.adapter = list?.let { it1 -> HabitRunRecyclerView(it1) }
         }
 
         binding.btnDrinking.setOnClickListener {
             val list = firestoreViewModel.getAllHabitDrinking()
-            binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
-            binding.recyclerView.setHasFixedSize(true)
             binding.recyclerView.adapter = list?.let { it2 -> HabitDrinkingRecyclerView(it2) }
         }
 
         binding.btnMeditation.setOnClickListener {
-
+            val list = firestoreViewModel.getAllHabitMeditation()
+            binding.recyclerView.adapter = list?.let { it3 -> HabitMeditationRecyclerView(it3) }
         }
 
         binding.btnReading.setOnClickListener {
-
+            val list = firestoreViewModel.getAllHabitReading()
+            binding.recyclerView.adapter = list?.let { it4 -> HabitReadingRecyclerView(it4) }
         }
 
         binding.btnSleep.setOnClickListener {
-
+            val list = firestoreViewModel.getAllHabitSleep()
+            binding.recyclerView.adapter = list?.let { it5 -> HabitSleepRecyclerView(it5) }
         }
 
         binding.btnYoga.setOnClickListener {
-
+            val list = firestoreViewModel.getAllHabitYoga()
+            binding.recyclerView.adapter = list?.let { it6 -> HabitYogaRecyclerView(it6) }
         }
 
         binding.floatingActionButton.setOnClickListener {
