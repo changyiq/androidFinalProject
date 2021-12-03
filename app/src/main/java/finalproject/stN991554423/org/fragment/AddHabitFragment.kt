@@ -26,7 +26,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [AddHabitFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AddHabitFragment : Fragment(), AdapterView.OnItemSelectedListener  {
+class AddHabitFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -36,7 +36,8 @@ class AddHabitFragment : Fragment(), AdapterView.OnItemSelectedListener  {
     // when the view hierarchy is attached to the fragment
     private var _binding: FragmentAddHabitBinding? = null
     private val binding get() = _binding!!
-    val spinner: Spinner = binding.habitType
+
+//    var habitArray = this.context?.resources?.getStringArray(R.array.habit_array)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,18 +61,18 @@ class AddHabitFragment : Fragment(), AdapterView.OnItemSelectedListener  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //----------------------------------|||||||
-        this.context?.let {
+        val spinner: Spinner = binding.habitType
+        this.activity?.let {
             ArrayAdapter.createFromResource(
                 it,
                 R.array.habit_array,
                 android.R.layout.simple_spinner_item
             ).also { adapter ->
-                // Specify the layout to use when the list of choices appears
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                // Apply the adapter to the spinner
                 spinner.adapter = adapter
             }
         }
+
         //---------------------------------||||||||
 
         binding.saveAction.setOnClickListener {
@@ -114,12 +115,12 @@ class AddHabitFragment : Fragment(), AdapterView.OnItemSelectedListener  {
                 }
             }
     }
-
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onNothingSelected(p0: AdapterView<*>?) {
-        TODO("Not yet implemented")
-    }
+//
+//    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+//        TODO("Not yet implemented")
+//    }
+//
+//    override fun onNothingSelected(p0: AdapterView<*>?) {
+//        TODO("Not yet implemented")
+//    }
 }
