@@ -1,5 +1,6 @@
 package finalproject.stN991554423.org.fragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,11 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.*
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.textfield.TextInputLayout
 import finalproject.stN991554423.org.R
 import finalproject.stN991554423.org.databinding.FragmentAddHabitBinding
 import finalproject.stN991554423.org.recyclerView.HabitRunRecyclerView
@@ -60,8 +60,13 @@ class AddHabitFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //----------------------------------|||||||
+        /*
+            Spinner adpater
+         */
         val spinner: Spinner = binding.habitType
+        var fieldLabel1: TextView = binding.tvAttr1
+        var fieldLabel2: TextView = binding.tvAttr2
+        var fieldLabel3: TextView = binding.tvAttr3
         this.activity?.let {
             ArrayAdapter.createFromResource(
                 it,
@@ -73,7 +78,46 @@ class AddHabitFragment : Fragment() {
             }
         }
 
-        //---------------------------------||||||||
+        spinner.setSelection(0)
+
+        // spinner setOnItemClickEvent
+        spinner.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                println("error")
+            }
+
+            @SuppressLint("SetTextI18n")
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val type = parent?.getItemAtPosition(position).toString()
+                if (type == "Run"){
+                    fieldLabel1.text = "Date:"
+                    fieldLabel2.text = "Time:"
+                    fieldLabel3.text = "Distance:"
+                }else if (type == "Meditation"){
+                    fieldLabel1.text = "Date:"
+                    fieldLabel2.text = "Time:"
+                    fieldLabel3.text = "Duration:"
+                }else if (type == "Reading"){
+                    fieldLabel1.text = "Date:"
+                    fieldLabel2.text = "Time:"
+                    fieldLabel3.text = "Duration:"
+                }else if (type == "Sleep"){
+                    fieldLabel1.text = "Date:"
+                    fieldLabel2.text = "Time:"
+                    fieldLabel3.text = "Duration:"
+                }else if (type == "Drinking"){
+                    fieldLabel1.text = "Date:"
+                    fieldLabel2.text = "Frequency:"
+                    fieldLabel3.text = "Consumption:"
+                }else if (type == "Yoga"){
+                    fieldLabel1.text = "Date:"
+                    fieldLabel2.text = "Time:"
+                    fieldLabel3.text = "Duration:"
+                }
+
+            }
+
+        }
 
         binding.saveAction.setOnClickListener {
             val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment(
