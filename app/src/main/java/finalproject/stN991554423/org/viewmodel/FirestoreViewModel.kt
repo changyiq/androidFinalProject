@@ -77,7 +77,6 @@ class FirestoreViewModel : ViewModel() {
             val savedHabitDrinkingList : MutableList<HabitDrinking> = mutableListOf()
             for (doc in value!!) {
                 val habitDrinking = doc.toObject(HabitDrinking::class.java)
-//                Log.e("Check---", habitDrinking.getDrinkingDate() + habitDrinking.getDrinkingFrequency() + habitDrinking.getDrinkingConsumption())
                 savedHabitDrinkingList.add(habitDrinking)
             }
             savedHabitDrinking = savedHabitDrinkingList
