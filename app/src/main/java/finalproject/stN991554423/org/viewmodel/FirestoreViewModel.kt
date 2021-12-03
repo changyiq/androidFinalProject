@@ -59,7 +59,6 @@ class FirestoreViewModel : ViewModel() {
             val savedHabitRunList : MutableList<HabitRun> = mutableListOf()
             for (doc in value!!) {
                 val habitRun = doc.toObject(HabitRun::class.java)
-                Log.e("Check---", habitRun.getRunDate() + habitRun.getRunTime() + habitRun.getRunDistance())
                 savedHabitRunList.add(habitRun)
             }
             savedHabitRun = savedHabitRunList
@@ -97,7 +96,6 @@ class FirestoreViewModel : ViewModel() {
             val savedHabitSleepList : MutableList<HabitSleep> = mutableListOf()
             for (doc in value!!) {
                 val habitSleep = doc.toObject(HabitSleep::class.java)
-                Log.e("Check---", habitSleep.getSleepDate() + habitSleep.getSleepTime() + habitSleep.getSleepDuration())
                 savedHabitSleepList.add(habitSleep)
             }
             savedHabitSleep = savedHabitSleepList
@@ -116,7 +114,6 @@ class FirestoreViewModel : ViewModel() {
             val savedHabitMeditationList : MutableList<HabitMeditation> = mutableListOf()
             for (doc in value!!) {
                 val habitMeditation = doc.toObject(HabitMeditation::class.java)
-                Log.e("Check---", habitMeditation.getMeditationDate() + habitMeditation.getMeditationTime() + habitMeditation.getMeditationDuration())
                 savedHabitMeditationList.add(habitMeditation)
             }
             savedHabitMeditation = savedHabitMeditationList
@@ -135,7 +132,6 @@ class FirestoreViewModel : ViewModel() {
             val savedHabitYogaList : MutableList<HabitYoga> = mutableListOf()
             for (doc in value!!) {
                 val habitYoga = doc.toObject(HabitYoga::class.java)
-                Log.e("Check---", habitYoga.getYogaDate() + habitYoga.getYogaTime() + habitYoga.getYogaDuration())
                 savedHabitYogaList.add(habitYoga)
             }
             savedHabitYoga = savedHabitYogaList
@@ -154,7 +150,6 @@ class FirestoreViewModel : ViewModel() {
             val savedHabitReadingList : MutableList<HabitReading> = mutableListOf()
             for (doc in value!!) {
                 val habitReading = doc.toObject(HabitReading::class.java)
-                Log.e("Check---", habitReading.getReadingDate() + habitReading.getReadingTime() + habitReading.getReadingDuration())
                 savedHabitReadingList.add(habitReading)
             }
             savedHabitReading = savedHabitReadingList
