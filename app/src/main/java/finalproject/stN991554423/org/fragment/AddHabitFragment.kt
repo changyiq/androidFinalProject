@@ -9,12 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.textfield.TextInputLayout
 import finalproject.stN991554423.org.R
+import finalproject.stN991554423.org.data.*
 import finalproject.stN991554423.org.databinding.FragmentAddHabitBinding
-import finalproject.stN991554423.org.recyclerView.HabitRunRecyclerView
+import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
+import org.w3c.dom.Text
+import kotlin.collections.HashMap
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +38,9 @@ class AddHabitFragment : Fragment() {
     // when the view hierarchy is attached to the fragment
     private var _binding: FragmentAddHabitBinding? = null
     private val binding get() = _binding!!
+
+    private val firestoreViewModel: FirestoreViewModel by activityViewModels()
+
 
 //    var habitArray = this.context?.resources?.getStringArray(R.array.habit_array)
 
@@ -64,9 +69,14 @@ class AddHabitFragment : Fragment() {
             Spinner adpater
          */
         val spinner: Spinner = binding.habitType
-        var fieldLabel1: TextView = binding.tvAttr1
-        var fieldLabel2: TextView = binding.tvAttr2
-        var fieldLabel3: TextView = binding.tvAttr3
+        val fieldLabel1: TextView = binding.tvAttr1
+        val fieldLabel2: TextView = binding.tvAttr2
+        val fieldLabel3: TextView = binding.tvAttr3
+        val inputField1: TextView = binding.habitAttr1
+        val inputField2: TextView = binding.habitAttr2
+        val inputField3: TextView = binding.habitAttr3
+        var type: String = ""
+
         this.activity?.let {
             ArrayAdapter.createFromResource(
                 it,
@@ -86,9 +96,10 @@ class AddHabitFragment : Fragment() {
                 println("error")
             }
 
+            // change textfiled label based on the habit type
             @SuppressLint("SetTextI18n")
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val type = parent?.getItemAtPosition(position).toString()
+                type = parent?.getItemAtPosition(position).toString()
                 if (type == "Run"){
                     fieldLabel1.text = "Date:"
                     fieldLabel2.text = "Time:"
@@ -119,9 +130,56 @@ class AddHabitFragment : Fragment() {
 
         }
 
+        // save data into firestore
         binding.saveAction.setOnClickListener {
             val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment(
             )
+
+            if (type == "Run"){
+                val habitRun = HabitRun()
+                habitRun.userId = 1
+                habitRun.runDate = inputField1.text.toString()
+                habitRun.runTime = inputField2.text.toString()
+                habitRun.runDistance = inputField3.text.toString().toDouble()
+                firestoreViewModel.saveRunToFirebase(habitRun)
+            }else if (type == "Meditation"){
+                val habitMeditation = HabitMeditation()
+                habitMeditation.userId = 1
+                habitMeditation.meditationDate = inputField1.text.toString()
+                habitMeditation.meditationTime = inputField2.text.toString()
+                habitMeditation.meditationDuration = inputField3.text.toString().toDouble()
+                firestoreViewModel.saveMeditationToFirebase(habitMeditation)
+            }else if (type == "Reading"){
+                val habitReading = HabitReading()
+                habitReading.userId = 1
+                habitReading.readingDate = inputField1.text.toString()
+                habitReading.readingTime = inputField2.text.toString()
+                habitReading.readingDuration = inputField3.text.toString().toDouble()
+                firestoreViewModel.saveReadingToFirebase(habitReading)
+            }else if (type == "Sleep"){
+                val habitSleep = HabitSleep()
+                habitSleep.userId = 1
+                habitSleep.sleepDate = inputField1.text.toString()
+                habitSleep.sleepTime = inputField2.text.toString()
+                habitSleep.sleepDuration = inputField3.text.toString().toDouble()
+                firestoreViewModel.saveSleepToFirebase(habitSleep)
+            }else if (type == "Drinking"){
+                val habitDrinking = HabitDrinking()
+                habitDrinking.userId = 1
+                habitDrinking.drinkingDate = inputField1.text.toString()
+                habitDrinking.drinkingFrequency = inputField2.text.toString().toInt()
+                habitDrinking.drinkingConsumption = inputField3.text.toString().toDouble()
+                firestoreViewModel.saveDrinkingToFirebase(habitDrinking)
+            }else if (type == "Yoga"){
+                val habitYoga = HabitYoga()
+                habitYoga.userId = 1
+                habitYoga.yogaDate = inputField1.text.toString()
+                habitYoga.yogaTime = inputField2.text.toString()
+                habitYoga.yogaDuration = inputField3.text.toString().toDouble()
+                firestoreViewModel.saveYogaToFirebase(habitYoga)
+            }
+
+            // navigate back to list fragment
             this.findNavController().navigate(action)
         }
     }

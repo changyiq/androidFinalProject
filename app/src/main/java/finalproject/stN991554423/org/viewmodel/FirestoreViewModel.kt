@@ -17,12 +17,35 @@ class FirestoreViewModel : ViewModel() {
     var savedHabitMeditation : MutableList<HabitMeditation>? = null
     var savedHabitYoga : MutableList<HabitYoga>? = null
 
-//    // save address to firebase
-//    fun saveAddressToFirebase(addressItem: HabitRun){
-//        firebaseRepository.savedHabitRun(addressItem).addOnFailureListener {
-//            Log.e(TAG,"Failed to save Address!")
-//        }
-//    }
+    // save run habit to firebase
+    fun saveRunToFirebase(runItem: HabitRun){
+        firebaseRepository.saveNewRun(runItem)
+    }
+
+    // save Meditation habit to firebase
+    fun saveMeditationToFirebase(meditationItem: HabitMeditation){
+        firebaseRepository.saveNewMeditation(meditationItem)
+    }
+
+    // save sleep habit to firebase
+    fun saveSleepToFirebase(sleepItem: HabitSleep){
+        firebaseRepository.saveNewSleep(sleepItem)
+    }
+
+    // save reading habit to firebase
+    fun saveReadingToFirebase(readingItem: HabitReading){
+        firebaseRepository.saveNewReading(readingItem)
+    }
+
+    // save Yoga habit to firebase
+    fun saveYogaToFirebase(yogaItem: HabitYoga){
+        firebaseRepository.saveNewYoga(yogaItem)
+    }
+
+    // save drinking habit to firebase
+    fun saveDrinkingToFirebase(drinkingItem: HabitDrinking){
+        firebaseRepository.saveNewDrinking(drinkingItem)
+    }
 
     // get realtime updates from firebase regarding saved habits
     fun getAllHabitRun(): MutableList<HabitRun>? {

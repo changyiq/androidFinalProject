@@ -1,7 +1,9 @@
 package finalproject.stN991554423.org.data
 
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FirestoreRepository {
@@ -10,13 +12,47 @@ class FirestoreRepository {
     var user = FirebaseAuth.getInstance().currentUser
 
 
-//    // save habitRun to firebase
-//    fun saveRun(eventHabitRun: HabitRun): Task<Void> {
-//        //var
-//        var documentReference = firestoreDB.collection("HabitRun").document(user!!.email.toString())
-//            .collection("saved_addresses").document(eventHabitRun.addressId)
-//        return documentReference.set(HabitRun)
-//    }
+    // save habitRun to firebase
+    fun saveNewRun(eventHabitRun: HabitRun): Task<*> {
+        //var
+        var documentReference = firestoreDB.collection("HabitRun").add(eventHabitRun)
+        return documentReference
+    }
+
+    // save habitMeditation to firebase
+    fun saveNewMeditation(eventHabitMeditation: HabitMeditation): Task<*> {
+        //var
+        var documentReference = firestoreDB.collection("HabitMeditation").add(eventHabitMeditation)
+        return documentReference
+    }
+
+    // save habitDrinking to firebase
+    fun saveNewDrinking(eventHabitDrinking: HabitDrinking): Task<*> {
+        //var
+        var documentReference = firestoreDB.collection("HabitDrinking").add(eventHabitDrinking)
+        return documentReference
+    }
+
+    // save habitSleep to firebase
+    fun saveNewSleep(eventHabitSleep: HabitSleep): Task<*> {
+        //var
+        var documentReference = firestoreDB.collection("HabitSleep").add(eventHabitSleep)
+        return documentReference
+    }
+
+    // save habitYoga to firebase
+    fun saveNewYoga(eventHabitYoga: HabitYoga): Task<*> {
+        //var
+        var documentReference = firestoreDB.collection("HabitYoga").add(eventHabitYoga)
+        return documentReference
+    }
+
+    // save habitReading to firebase
+    fun saveNewReading(eventHabitReading: HabitReading): Task<*> {
+        //var
+        var documentReference = firestoreDB.collection("HabitReading").add(eventHabitReading)
+        return documentReference
+    }
 
     // get saved habitRun from firebase
     fun getRunCollection(): CollectionReference {
