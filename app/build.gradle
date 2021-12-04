@@ -75,6 +75,11 @@ dependencies {
 
     implementation 'com.firebaseui:firebase-ui-auth:5.0.0'
 
+    // coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
+
+
     // Add the dependencies for the desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
 

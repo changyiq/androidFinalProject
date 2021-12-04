@@ -1,12 +1,10 @@
 package finalproject.stN991554423.org.data
 
+import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.model.Document
 
 
 class FirestoreRepository {
@@ -17,17 +15,15 @@ class FirestoreRepository {
 
     // save habitRun to firebase
     fun saveNewRun(eventHabitRun: HabitRun): Task<*> {
-
-        var documentReference = firestoreDB.collection("HabitRun").add(eventHabitRun)
+        val documentReference = firestoreDB.collection("HabitRun").document("${eventHabitRun.id}").set(eventHabitRun)
         return documentReference
     }
 
-    fun updateRun(eventHabitRun: HabitRun): Task<*> {
-        var documentReference = firestoreDB.collection("HabitRun")
-            .document()
-            .set(eventHabitRun)
-        return documentReference
-    }
+//    fun updateRun(eventHabitRun: HabitRun): Task<*> {
+//        var documentReference = firestoreDB.collection("HabitRun")
+//            .document().update
+//        return documentReference
+//    }
 
     // save habitMeditation to firebase
     fun saveNewMeditation(eventHabitMeditation: HabitMeditation): Task<*> {
@@ -99,6 +95,7 @@ class FirestoreRepository {
         var collectionReference = firestoreDB.collection("HabitSleep")
         return collectionReference
     }
+
 
 //    fun deleteRunHabit(docHabitRun: HabitRun): Task<Void> {
 //        var documentReference =  firestoreDB.collection("HabitRun")

@@ -23,11 +23,6 @@ class FirestoreViewModel : ViewModel() {
         firebaseRepository.saveNewRun(runItem)
     }
 
-    // update run habit to firestore
-    fun updateRunToFirebase(runItem: HabitRun){
-        firebaseRepository.updateRun(runItem)
-    }
-
     // save Meditation habit to firebase
     fun saveMeditationToFirebase(meditationItem: HabitMeditation){
         firebaseRepository.saveNewMeditation(meditationItem)
@@ -52,6 +47,11 @@ class FirestoreViewModel : ViewModel() {
     fun saveDrinkingToFirebase(drinkingItem: HabitDrinking){
         firebaseRepository.saveNewDrinking(drinkingItem)
     }
+
+//    // update run habit to firestore
+//    fun updateRunToFirebase(runItem: HabitRun){
+//        firebaseRepository.updateRun(runItem)
+//    }
 
     // get realtime updates from firebase regarding saved habits
     fun getAllHabitRun(): MutableList<HabitRun>? {

@@ -3,6 +3,7 @@ package finalproject.stN991554423.org.fragment
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,17 +11,15 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.navigation.fragment.findNavController
 import finalproject.stN991554423.org.R
 import finalproject.stN991554423.org.data.*
 import finalproject.stN991554423.org.databinding.FragmentAddHabitBinding
 import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
-import org.w3c.dom.Text
-import kotlin.collections.HashMap
 
 
-class AddHabitFragment : Fragment() {
-
+class AddHabitFragment() : Fragment() {
 
     // Binding object instance corresponding to the fragment_add_item.xml layout
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
@@ -29,10 +28,6 @@ class AddHabitFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val firestoreViewModel: FirestoreViewModel by activityViewModels()
-
-
-//    var habitArray = this.context?.resources?.getStringArray(R.array.habit_array)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -121,41 +116,47 @@ class AddHabitFragment : Fragment() {
             val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment(
             )
 
-            if (type == "Run"){
+            if (type == "Run") {
                 val habitRun = HabitRun()
                 habitRun.runDate = inputField1.text.toString()
                 habitRun.runTime = inputField2.text.toString()
                 habitRun.runDistance = inputField3.text.toString().toDouble()
+                habitRun.id = (0..10000000).random().toString()
                 firestoreViewModel.saveRunToFirebase(habitRun)
             }else if (type == "Meditation"){
                 val habitMeditation = HabitMeditation()
                 habitMeditation.meditationDate = inputField1.text.toString()
                 habitMeditation.meditationTime = inputField2.text.toString()
                 habitMeditation.meditationDuration = inputField3.text.toString().toDouble()
+                habitMeditation.id = (10000001..20000000).random().toString()
                 firestoreViewModel.saveMeditationToFirebase(habitMeditation)
             }else if (type == "Reading"){
                 val habitReading = HabitReading()
                 habitReading.readingDate = inputField1.text.toString()
                 habitReading.readingTime = inputField2.text.toString()
                 habitReading.readingDuration = inputField3.text.toString().toDouble()
+                habitReading.id = (20000001..30000000).random().toString()
                 firestoreViewModel.saveReadingToFirebase(habitReading)
             }else if (type == "Sleep"){
                 val habitSleep = HabitSleep()
                 habitSleep.sleepDate = inputField1.text.toString()
                 habitSleep.sleepTime = inputField2.text.toString()
                 habitSleep.sleepDuration = inputField3.text.toString().toDouble()
+                habitSleep.id = (30000001..40000000).random().toString()
                 firestoreViewModel.saveSleepToFirebase(habitSleep)
             }else if (type == "Drinking"){
                 val habitDrinking = HabitDrinking()
                 habitDrinking.drinkingDate = inputField1.text.toString()
                 habitDrinking.drinkingFrequency = inputField2.text.toString().toInt()
                 habitDrinking.drinkingConsumption = inputField3.text.toString().toDouble()
+                habitDrinking.id = (40000001..50000000).random().toString()
                 firestoreViewModel.saveDrinkingToFirebase(habitDrinking)
             }else if (type == "Yoga"){
                 val habitYoga = HabitYoga()
                 habitYoga.yogaDate = inputField1.text.toString()
                 habitYoga.yogaTime = inputField2.text.toString()
                 habitYoga.yogaDuration = inputField3.text.toString().toDouble()
+                habitYoga.id = (50000001..60000000).random().toString()
                 firestoreViewModel.saveYogaToFirebase(habitYoga)
             }
 
