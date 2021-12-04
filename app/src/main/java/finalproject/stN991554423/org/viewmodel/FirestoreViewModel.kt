@@ -2,6 +2,7 @@ package finalproject.stN991554423.org.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.QuerySnapshot
 import finalproject.stN991554423.org.data.*
@@ -20,6 +21,11 @@ class FirestoreViewModel : ViewModel() {
     // save run habit to firebase
     fun saveRunToFirebase(runItem: HabitRun){
         firebaseRepository.saveNewRun(runItem)
+    }
+
+    // update run habit to firestore
+    fun updateRunToFirebase(runItem: HabitRun){
+        firebaseRepository.updateRun(runItem)
     }
 
     // save Meditation habit to firebase
@@ -157,3 +163,15 @@ class FirestoreViewModel : ViewModel() {
         return savedHabitReading
     }
 }
+
+class FirestoreViewModelFactory(): ViewModelProvider.Factory{
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if(modelClass.isAssignableFrom(FirestoreViewModel::class.java)){
+            @Suppress("UNCHECKED_CAST")
+            return FirestoreViewModel() as T
+        }
+        throw IllegalAccessException("Unknown ViewModel class")
+    }
+
+}
+

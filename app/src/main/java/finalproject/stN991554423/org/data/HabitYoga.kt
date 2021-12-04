@@ -7,8 +7,8 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-class HabitYoga(var userId: Int, var yogaDate: String, var yogaTime: String, var yogaDuration: Double):
+class HabitYoga( var yogaDate: String, var yogaTime: String, var yogaDuration: Double):
     Serializable {
 
-    constructor(): this(0,"", "", 0.0)
+    constructor(): this("", "", 0.0)
 }

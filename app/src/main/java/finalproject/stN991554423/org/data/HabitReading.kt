@@ -7,8 +7,8 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-class HabitReading(var userId: Int, var readingDate: String, var readingTime: String, var readingDuration: Double):
+class HabitReading(var readingDate: String, var readingTime: String, var readingDuration: Double):
     Serializable {
 
-    constructor(): this(0,"", "", 0.0)
+    constructor(): this("", "", 0.0)
 }

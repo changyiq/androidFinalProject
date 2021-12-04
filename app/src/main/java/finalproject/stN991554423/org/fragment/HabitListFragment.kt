@@ -1,19 +1,14 @@
 package finalproject.stN991554423.org.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import finalproject.stN991554423.org.R
-import finalproject.stN991554423.org.data.FirestoreRepository
-import finalproject.stN991554423.org.data.HabitRun
 import finalproject.stN991554423.org.databinding.HabitListFragmentBinding
 import finalproject.stN991554423.org.recyclerView.*
 import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
@@ -60,31 +55,49 @@ class HabitListFragment : Fragment() {
         // button click event to trigger database data fetching
         binding.btnRun.setOnClickListener {
             val list = firestoreViewModel.getAllHabitRun()
+            binding.habitAttr1Label.text = "Date"
+            binding.habitAttr2Label.text = "Time"
+            binding.habitAttr3Label.text = "Distance"
             binding.recyclerView.adapter = list?.let { it1 -> HabitRunRecyclerView(it1) }
         }
 
         binding.btnDrinking.setOnClickListener {
             val list = firestoreViewModel.getAllHabitDrinking()
+            binding.habitAttr1Label.text = "Date"
+            binding.habitAttr2Label.text = "Frequency"
+            binding.habitAttr3Label.text = "Consumption"
             binding.recyclerView.adapter = list?.let { it2 -> HabitDrinkingRecyclerView(it2) }
         }
 
         binding.btnMeditation.setOnClickListener {
             val list = firestoreViewModel.getAllHabitMeditation()
+            binding.habitAttr1Label.text = "Date"
+            binding.habitAttr2Label.text = "Time"
+            binding.habitAttr3Label.text = "Duration"
             binding.recyclerView.adapter = list?.let { it3 -> HabitMeditationRecyclerView(it3) }
         }
 
         binding.btnReading.setOnClickListener {
             val list = firestoreViewModel.getAllHabitReading()
+            binding.habitAttr1Label.text = "Date"
+            binding.habitAttr2Label.text = "Time"
+            binding.habitAttr3Label.text = "Duration"
             binding.recyclerView.adapter = list?.let { it4 -> HabitReadingRecyclerView(it4) }
         }
 
         binding.btnSleep.setOnClickListener {
             val list = firestoreViewModel.getAllHabitSleep()
+            binding.habitAttr1Label.text = "Date"
+            binding.habitAttr2Label.text = "Time"
+            binding.habitAttr3Label.text = "Duration"
             binding.recyclerView.adapter = list?.let { it5 -> HabitSleepRecyclerView(it5) }
         }
 
         binding.btnYoga.setOnClickListener {
             val list = firestoreViewModel.getAllHabitYoga()
+            binding.habitAttr1Label.text = "Date"
+            binding.habitAttr2Label.text = "Time"
+            binding.habitAttr3Label.text = "Duration"
             binding.recyclerView.adapter = list?.let { it6 -> HabitYogaRecyclerView(it6) }
         }
 
@@ -122,7 +135,7 @@ class HabitListFragment : Fragment() {
                 true
             }
             // only for test
-            R.id.action_detail->{
+            R.id.action_detail -> {
                 checkDeatil()
                 true
             }
@@ -144,7 +157,7 @@ class HabitListFragment : Fragment() {
         FirebaseAuth.getInstance().signOut()
     }
 
-    fun checkDeatil(){
+    fun checkDeatil() {
         val action = HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment()
 
         this.findNavController().navigate(action)

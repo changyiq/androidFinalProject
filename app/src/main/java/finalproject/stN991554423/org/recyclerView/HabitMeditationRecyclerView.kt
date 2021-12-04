@@ -11,7 +11,7 @@ import finalproject.stN991554423.org.data.HabitMeditation
 class HabitMeditationRecyclerView (private val sampleList: List<HabitMeditation>): RecyclerView.Adapter <HabitMeditationRecyclerView.MyViewHolder>(){
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val userId: TextView = itemView.findViewById(R.id.user_id)
+
         val field1: TextView = itemView.findViewById(R.id.habit_field_1)
         val field2: TextView = itemView.findViewById(R.id.habit_field_2)
         val field3: TextView = itemView.findViewById(R.id.habit_field_3)
@@ -29,7 +29,6 @@ class HabitMeditationRecyclerView (private val sampleList: List<HabitMeditation>
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = sampleList [position]
 
-        holder.userId.text= currentItem.userId.toString()
         holder.field1.text= currentItem.meditationDate
         holder.field2.text= currentItem.meditationTime
         holder.field3.text= currentItem.meditationDuration.toString()

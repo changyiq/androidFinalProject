@@ -5,6 +5,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.model.Document
+
 
 class FirestoreRepository {
     val TAG = "FIREBASE_REPOSITORY"
@@ -14,8 +17,15 @@ class FirestoreRepository {
 
     // save habitRun to firebase
     fun saveNewRun(eventHabitRun: HabitRun): Task<*> {
-        //var
+
         var documentReference = firestoreDB.collection("HabitRun").add(eventHabitRun)
+        return documentReference
+    }
+
+    fun updateRun(eventHabitRun: HabitRun): Task<*> {
+        var documentReference = firestoreDB.collection("HabitRun")
+            .document()
+            .set(eventHabitRun)
         return documentReference
     }
 

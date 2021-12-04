@@ -11,7 +11,7 @@ import finalproject.stN991554423.org.data.HabitSleep
 class HabitSleepRecyclerView (private val sampleList: List<HabitSleep>): RecyclerView.Adapter <HabitSleepRecyclerView.MyViewHolder>(){
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val userId: TextView = itemView.findViewById(R.id.user_id)
+
         val field1: TextView = itemView.findViewById(R.id.habit_field_1)
         val field2: TextView = itemView.findViewById(R.id.habit_field_2)
         val field3: TextView = itemView.findViewById(R.id.habit_field_3)
@@ -29,7 +29,6 @@ class HabitSleepRecyclerView (private val sampleList: List<HabitSleep>): Recycle
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = sampleList [position]
 
-        holder.userId.text= currentItem.userId.toString()
         holder.field1.text= currentItem.sleepDate
         holder.field2.text= currentItem.sleepTime
         holder.field3.text= currentItem.sleepDuration.toString()

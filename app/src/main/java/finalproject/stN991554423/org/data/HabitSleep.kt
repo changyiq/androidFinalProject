@@ -7,8 +7,8 @@ import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-class HabitSleep(var userId: Int, var sleepDate: String, var sleepTime: String, var sleepDuration: Double):
+class HabitSleep(var sleepDate: String, var sleepTime: String, var sleepDuration: Double):
     Serializable {
 
-    constructor(): this(0,"", "", 0.0)
+    constructor(): this("", "", 0.0)
 }

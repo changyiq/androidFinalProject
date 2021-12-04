@@ -31,31 +31,49 @@
 
 
     <TextView
-        android:id="@+id/user_id"
+        android:id="@+id/habitAttr1Label"
         style="@style/Widget.HabitTracker.Header"
-        android:layout_width="128dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="@dimen/margin_between_elements"
-        android:layout_marginTop="16dp"
-        android:text="@string/habit"
-        app:layout_constraintEnd_toStartOf="@+id/progress"
-        app:layout_constraintHorizontal_weight="2"
+        android:layout_width="100dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="224dp"
+        android:text="@string/habit_attr1"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRun" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDrinking" />
 
     <TextView
-        android:id="@+id/progress"
+        android:id="@+id/habitAttr2Label"
         style="@style/Widget.HabitTracker.Header"
-        android:layout_below="@+id/user_id"
-        android:layout_marginStart="@dimen/margin_between_elements"
-        android:text="@string/progress"
+        android:layout_width="100dp"
+        android:layout_height="18dp"
+        android:layout_below="@+id/habitAttr1Label"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="150dp"
+        android:text="@string/habit_attr2"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/user_id"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/user_id"
-        app:layout_constraintTop_toBottomOf="@+id/btnRun"
-        app:layout_constraintVertical_bias="0.941" />
+        app:layout_constraintStart_toEndOf="@+id/habitAttr1Label"
+        app:layout_constraintTop_toBottomOf="@+id/btnReading" />
+
+    <TextView
+        android:id="@+id/habitAttr3Label"
+        style="@style/Widget.HabitTracker.Header"
+        android:layout_width="95dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/habitAttr2Label"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/habit_attr3"
+        android:textAlignment="center"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/habitAttr2Label"
+        app:layout_constraintTop_toBottomOf="@+id/btnRun" />
 
     <View
         android:id="@+id/divider"
@@ -65,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress" />
+        app:layout_constraintTop_toBottomOf="@+id/habitAttr1Label" />
 
 
     <androidx.recyclerview.widget.RecyclerView
