@@ -26,10 +26,10 @@ import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
  */
 class HabitDetailFragment : Fragment() {
 
-    //private val navigationArgs: HabitDetailFragmentArgs by navArgs()
+    private val navigationArgs: HabitDetailFragmentArgs by navArgs()
 
     private var _binding: FragmentHabitDetailBinding? = null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
 
     lateinit var habitDrikning: HabitDrinking
     lateinit var habitMeditation: HabitMeditation
@@ -38,15 +38,13 @@ class HabitDetailFragment : Fragment() {
     lateinit var habitSleep: HabitSleep
     lateinit var habitYoga: HabitYoga
 
+    var id = ""
+
     private val firestoreViewModel: FirestoreViewModel by activityViewModels()
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        arguments?.let {
-//            param1 = it.getString(ARG_PARAM1)
-//            param2 = it.getString(ARG_PARAM2)
-//        }
-//    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,12 +55,17 @@ class HabitDetailFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        return binding?.root
-        //return inflater.inflate(R.layout.fragment_habit_detail, container, false)
+        return binding.root
     }
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        id =navigationArgs.habitId
+
+        binding.HabitDateLabel.text = id
+    }
 
 
 
@@ -96,10 +99,10 @@ class HabitDetailFragment : Fragment() {
                 true
             }
             // only for test
-            R.id.action_list -> {
-                checkList()
-                true
-            }
+//            R.id.action_list -> {
+//                checkList()
+//                true
+//            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -113,9 +116,9 @@ class HabitDetailFragment : Fragment() {
         FirebaseAuth.getInstance().signOut()
     }
 
-    fun checkList() {
-        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToHabitListFragment()
-        this.findNavController().navigate(action)
-    }
+//    fun checkList() {
+//        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToHabitListFragment()
+//        this.findNavController().navigate(action)
+//    }
 }
 

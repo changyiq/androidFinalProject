@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import finalproject.stN991554423.org.R
 import finalproject.stN991554423.org.data.*
@@ -35,7 +36,8 @@ class AddHabitFragment() : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
@@ -113,8 +115,6 @@ class AddHabitFragment() : Fragment() {
 
         // save data into firestore
         binding.saveAction.setOnClickListener {
-            val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment(
-            )
 
             if (type == "Run") {
                 val habitRun = HabitRun()
@@ -160,6 +160,7 @@ class AddHabitFragment() : Fragment() {
                 firestoreViewModel.saveYogaToFirebase(habitYoga)
             }
 
+            val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment()
             // navigate back to list fragment
             this.findNavController().navigate(action)
         }

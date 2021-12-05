@@ -1,5 +1,6 @@
 package finalproject.stN991554423.org.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import finalproject.stN991554423.org.recyclerView.*
 import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
 import finalproject.stN991554423.org.viewmodel.HabitListViewModel
 
+
 const val TAG = "FIRESTORE"
 
 class HabitListFragment : Fragment() {
@@ -25,11 +27,11 @@ class HabitListFragment : Fragment() {
     // properties
     private var _binding: HabitListFragmentBinding? = null
     private lateinit var viewModel: HabitListViewModel
+
 //    private var firestoreRepository: FirestoreRepository? = null
 
     //    val firestoreViewModel = ViewModelProviders.of(this)[FirestoreViewModel::class.java]
     private val firestoreViewModel: FirestoreViewModel by activityViewModels()
-
 
     // with the backing property of the kotlin we extract
     // the non null value of the _binding
@@ -40,12 +42,13 @@ class HabitListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = HabitListFragmentBinding.inflate(inflater, container, false)
-
         setHasOptionsMenu(true)
+
 
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
@@ -58,7 +61,13 @@ class HabitListFragment : Fragment() {
             binding.habitAttr1Label.text = "Date"
             binding.habitAttr2Label.text = "Time"
             binding.habitAttr3Label.text = "Distance"
-            binding.recyclerView.adapter = list?.let { it1 -> HabitRunRecyclerView(it1) }
+            val adapter = HabitRunItemListAdapter {
+                val action =
+                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(it.id,it.runDate,it.runTime,it.runDistance.toString())
+                this.findNavController().navigate(action)
+            }
+            binding.recyclerView.adapter = adapter
+            adapter.submitList(list)
         }
 
         binding.btnDrinking.setOnClickListener {
@@ -66,7 +75,13 @@ class HabitListFragment : Fragment() {
             binding.habitAttr1Label.text = "Date"
             binding.habitAttr2Label.text = "Frequency"
             binding.habitAttr3Label.text = "Consumption"
-            binding.recyclerView.adapter = list?.let { it2 -> HabitDrinkingRecyclerView(it2) }
+            val adapter = HabitDrinkingItemListAdapter {
+                val action =
+                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(it.id,it.drinkingDate,it.drinkingFrequency.toString(),it.drinkingConsumption.toString())
+                this.findNavController().navigate(action)
+            }
+            binding.recyclerView.adapter = adapter
+            adapter.submitList(list)
         }
 
         binding.btnMeditation.setOnClickListener {
@@ -74,7 +89,13 @@ class HabitListFragment : Fragment() {
             binding.habitAttr1Label.text = "Date"
             binding.habitAttr2Label.text = "Time"
             binding.habitAttr3Label.text = "Duration"
-            binding.recyclerView.adapter = list?.let { it3 -> HabitMeditationRecyclerView(it3) }
+            val adapter = HabitMeditationItemListAdapter {
+                val action =
+                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(it.id,it.meditationDate,it.meditationTime,it.meditationDuration.toString())
+                this.findNavController().navigate(action)
+            }
+            binding.recyclerView.adapter = adapter
+            adapter.submitList(list)
         }
 
         binding.btnReading.setOnClickListener {
@@ -82,7 +103,13 @@ class HabitListFragment : Fragment() {
             binding.habitAttr1Label.text = "Date"
             binding.habitAttr2Label.text = "Time"
             binding.habitAttr3Label.text = "Duration"
-            binding.recyclerView.adapter = list?.let { it4 -> HabitReadingRecyclerView(it4) }
+            val adapter = HabitReadingItemListAdapter {
+                val action =
+                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(it.id,it.readingDate,it.readingTime,it.readingDuration.toString())
+                this.findNavController().navigate(action)
+            }
+            binding.recyclerView.adapter = adapter
+            adapter.submitList(list)
         }
 
         binding.btnSleep.setOnClickListener {
@@ -90,7 +117,13 @@ class HabitListFragment : Fragment() {
             binding.habitAttr1Label.text = "Date"
             binding.habitAttr2Label.text = "Time"
             binding.habitAttr3Label.text = "Duration"
-            binding.recyclerView.adapter = list?.let { it5 -> HabitSleepRecyclerView(it5) }
+            val adapter = HabitSleepItemListAdapter {
+                val action =
+                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(it.id,it.sleepDate,it.sleepTime,it.sleepDuration.toString())
+                this.findNavController().navigate(action)
+            }
+            binding.recyclerView.adapter = adapter
+            adapter.submitList(list)
         }
 
         binding.btnYoga.setOnClickListener {
@@ -98,7 +131,13 @@ class HabitListFragment : Fragment() {
             binding.habitAttr1Label.text = "Date"
             binding.habitAttr2Label.text = "Time"
             binding.habitAttr3Label.text = "Duration"
-            binding.recyclerView.adapter = list?.let { it6 -> HabitYogaRecyclerView(it6) }
+            val adapter = HabitYogaItemListAdapter {
+                val action =
+                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(it.id,it.yogaDate,it.yogaTime,it.yogaDuration.toString())
+                this.findNavController().navigate(action)
+            }
+            binding.recyclerView.adapter = adapter
+            adapter.submitList(list)
         }
 
         binding.floatingActionButton.setOnClickListener {
@@ -107,22 +146,6 @@ class HabitListFragment : Fragment() {
             this.findNavController().navigate(action)
         }
     }
-
-
-//    // repeat the rows and get the list
-//    private fun generateDummyList(size: Int): List<HabitRun> {
-//        val list = ArrayList<HabitRun>()
-//        for (i in 0 until size) {
-//            val drawable = when (i % 3) {
-//                0 -> R.drawable.ic_android
-//                1 -> R.drawable.ic_launcher_background
-//                else -> R.drawable.ic_launcher_foreground
-//            }
-//            val item = HabitRun(drawable, "Item $i", "Line 2")
-//            list += item
-//        }
-//        return list
-//    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu, menu)
@@ -158,9 +181,7 @@ class HabitListFragment : Fragment() {
     }
 
     fun checkDeatil() {
-        val action = HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment()
 
-        this.findNavController().navigate(action)
     }
 }
 
