@@ -53,10 +53,8 @@
     <!-- Habit detail page -->
     <string name="habit_date">Date:</string>
     <string name="habit_time">Time:</string>
-    <string name="sell">Sell</string>
-    <string name="delete">Delete</string>
+    <string name="delete_habit">Delete</string>
     <string name="edit_habit">Edit Item</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="check_detail">Check Detail</string>
     <string name="habit_attr1">Habits</string>
@@ -64,7 +62,9 @@
     <string name="habit_attr3">List</string>
     <string name="habit_history">Habit History</string>
     <string name="check_list">Check habit list</string>
-
+    <string name="delete_question">Are you sure you want to delete?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 
 
 </resources>

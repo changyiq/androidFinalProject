@@ -6,10 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import finalproject.stN991554423.org.R
 import finalproject.stN991554423.org.data.*
-import finalproject.stN991554423.org.databinding.ActivityMainBinding.bind
 import finalproject.stN991554423.org.databinding.FragmentHabitDetailBinding
 import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
 
@@ -26,21 +26,24 @@ import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
  */
 class HabitDetailFragment : Fragment() {
 
+    private val firestoreViewModel: FirestoreViewModel by activityViewModels()
+
     private val navigationArgs: HabitDetailFragmentArgs by navArgs()
 
     private var _binding: FragmentHabitDetailBinding? = null
     private val binding get() = _binding!!
 
-    lateinit var habitDrikning: HabitDrinking
+    var id = ""
+
+    // this is only for test because the getDocument methods doesn't work
+    var habitDrikning: HabitDrinking? = null
+    //var habitDrikning: HabitDrinking = firestoreViewModel.getHabitDrinkingDoc()
+
     lateinit var habitMeditation: HabitMeditation
     lateinit var habitReading: HabitReading
     lateinit var habitRun: HabitRun
     lateinit var habitSleep: HabitSleep
     lateinit var habitYoga: HabitYoga
-
-    var id = ""
-
-    private val firestoreViewModel: FirestoreViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,36 +61,73 @@ class HabitDetailFragment : Fragment() {
         return binding.root
     }
 
+    private fun habitDrinkingBind() {
+        binding.apply {
+            imageView.setImageResource(R.drawable.water)
+            habitName.text = "Drink Water"
+            habitAttr1Label.text = "Date:"
+            habitAttr1.text = habitDrikning?.drinkingDate.toString()
+            habitAttr2Label.text = "Frequency:"
+            habitAttr2.text = habitDrikning?.drinkingFrequency.toString()
+            habitAttr3Label.text = "Consumption:"
+            habitAttr3.text = habitDrikning?.drinkingConsumption.toString()
+
+            deleteHabit.setOnClickListener { showConfirmationDialog() }
+            editHabit.setOnClickListener { editHabitDrinkingItem() }
+        }
+    }
+
+    private fun editHabitDrinkingItem() {
+        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToAddHabitFragment(
+            //habitDrikning.id
+        )
+        this.findNavController().navigate(action)
+    }
+
+    private fun deleteHabitDrinkingItem() {
+        //firestoreViewModel.deleteHabitDrinkingDoc(habitDrikning.id)
+        findNavController().navigateUp()
+    }
+
+    private fun showConfirmationDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(android.R.string.dialog_alert_title))
+            .setMessage(getString(R.string.delete_question))
+            .setCancelable(false)
+            .setNegativeButton(getString(R.string.no)) { _, _ -> }
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                deleteHabitDrinkingItem()
+            }
+            .show()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        id =navigationArgs.habitId
+        id = navigationArgs.habitId
 
-        binding.HabitDateLabel.text = id
+        if (id.toLong() in 0..10000000) {
+        }
+
+        if (id.toLong() in 10000001..20000000) {
+        }
+
+        if (id.toLong() in 20000001..30000000) {
+        }
+
+        if (id.toLong() in 30000001..40000000) {
+        }
+
+        if (id.toLong() in 40000001..50000000) {
+            habitDrinkingBind()
+        }
+
+        if (id.toLong() in 50000001..60000000) {
+        }
+
     }
 
 
-
-    //    companion object {
-//        /**
-//         * Use this factory method to create a new instance of
-//         * this fragment using the provided parameters.
-//         *
-//         * @param param1 Parameter 1.
-//         * @param param2 Parameter 2.
-//         * @return A new instance of fragment HabitDetailFragment.
-//         */
-//        // TODO: Rename and change types and number of parameters
-//        @JvmStatic
-//        fun newInstance(param1: String, param2: String) =
-//            HabitDetailFragment().apply {
-//                arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
-//                }
-//            }
-//    }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.detail_menu, menu)
     }

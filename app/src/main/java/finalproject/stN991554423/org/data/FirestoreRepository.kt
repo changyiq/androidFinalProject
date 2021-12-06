@@ -3,8 +3,7 @@ package finalproject.stN991554423.org.data
 import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.*
 
 
 class FirestoreRepository {
@@ -12,95 +11,287 @@ class FirestoreRepository {
     var firestoreDB = FirebaseFirestore.getInstance()
     var user = FirebaseAuth.getInstance().currentUser
 
-
-    // save habitRun to firebase
-    fun saveNewRun(eventHabitRun: HabitRun): Task<*> {
-        val documentReference = firestoreDB.collection("HabitRun").document("${eventHabitRun.id}").set(eventHabitRun)
-        return documentReference
+    //----------------------------add to collection----------------------------------------------//
+    // save habitDrinking to firebase
+    fun saveNewDrinking(eventHabitDrinking: HabitDrinking): Task<*> {
+        //var
+        return firestoreDB.collection("HabitDrinking")
+            .document("${eventHabitDrinking.id}")
+            .set(eventHabitDrinking)
     }
-
-//    fun updateRun(eventHabitRun: HabitRun): Task<*> {
-//        var documentReference = firestoreDB.collection("HabitRun")
-//            .document().update
-//        return documentReference
-//    }
 
     // save habitMeditation to firebase
     fun saveNewMeditation(eventHabitMeditation: HabitMeditation): Task<*> {
         //var
-        var documentReference = firestoreDB.collection("HabitMeditation").add(eventHabitMeditation)
-        return documentReference
-    }
-
-    // save habitDrinking to firebase
-    fun saveNewDrinking(eventHabitDrinking: HabitDrinking): Task<*> {
-        //var
-        var documentReference = firestoreDB.collection("HabitDrinking").add(eventHabitDrinking)
-        return documentReference
-    }
-
-    // save habitSleep to firebase
-    fun saveNewSleep(eventHabitSleep: HabitSleep): Task<*> {
-        //var
-        var documentReference = firestoreDB.collection("HabitSleep").add(eventHabitSleep)
-        return documentReference
-    }
-
-    // save habitYoga to firebase
-    fun saveNewYoga(eventHabitYoga: HabitYoga): Task<*> {
-        //var
-        var documentReference = firestoreDB.collection("HabitYoga").add(eventHabitYoga)
-        return documentReference
+        return firestoreDB.collection("HabitMeditation")
+            .document("${eventHabitMeditation.id}")
+            .set(eventHabitMeditation)
     }
 
     // save habitReading to firebase
     fun saveNewReading(eventHabitReading: HabitReading): Task<*> {
         //var
-        var documentReference = firestoreDB.collection("HabitReading").add(eventHabitReading)
-        return documentReference
+        return firestoreDB.collection("HabitReading")
+            .document("${eventHabitReading.id}")
+            .set(eventHabitReading)
     }
 
-    // get saved habitRun from firebase
-    fun getRunCollection(): CollectionReference {
-        var collectionReference = firestoreDB.collection("HabitRun")
-        return collectionReference
+    // save habitRun to firebase
+    fun saveNewRun(eventHabitRun: HabitRun): Task<*> {
+        return firestoreDB.collection("HabitRun")
+            .document("${eventHabitRun.id}")
+            .set(eventHabitRun)
     }
 
-    // get saved habitReading from firebase
-    fun getReadingCollection(): CollectionReference {
-        var collectionReference = firestoreDB.collection("HabitReading")
-        return collectionReference
+    // save habitSleep to firebase
+    fun saveNewSleep(eventHabitSleep: HabitSleep): Task<*> {
+        //var
+        return firestoreDB.collection("HabitSleep")
+            .document("${eventHabitSleep.id}")
+            .set(eventHabitSleep)
+    }
+
+    // save habitYoga to firebase
+    fun saveNewYoga(eventHabitYoga: HabitYoga): Task<*> {
+        //var
+        return firestoreDB.collection("HabitYoga")
+            .document("${eventHabitYoga.id}")
+            .set(eventHabitYoga)
+    }
+
+    //----------------------------retrieve collection--------------------------------------------//
+    // get saved habitDrinking from firebase
+    fun getDrinkingCollection(): CollectionReference {
+        return firestoreDB.collection("HabitDrinking")
     }
 
     // get saved habitMeditation from firebase
     fun getMeditationCollection(): CollectionReference {
-        var collectionReference = firestoreDB.collection("HabitMeditation")
-        return collectionReference
+        return firestoreDB.collection("HabitMeditation")
     }
 
-    // get saved habitYoga from firebase
-    fun getYogaCollection(): CollectionReference {
-        var collectionReference = firestoreDB.collection("HabitYoga")
-        return collectionReference
+    // get saved habitReading from firebase
+    fun getReadingCollection(): CollectionReference {
+        return firestoreDB.collection("HabitReading")
     }
 
-    // get saved habitDrinking from firebase
-    fun getDrinkingCollection(): CollectionReference {
-        var collectionReference = firestoreDB.collection("HabitDrinking")
-        return collectionReference
+    // // get saved habitRun from firebase
+    fun getRunCollection(): CollectionReference {
+        return firestoreDB.collection("HabitRun")
     }
 
     // get saved habitSleep from firebase
     fun getSleepCollection(): CollectionReference {
-        var collectionReference = firestoreDB.collection("HabitSleep")
-        return collectionReference
+        return firestoreDB.collection("HabitSleep")
+    }
+
+    // get saved habitYoga from firebase
+    fun getYogaCollection(): CollectionReference {
+        return firestoreDB.collection("HabitYoga")
+    }
+
+    //----------------------------retrieve document---------------------------------------------//
+    // get one habitDrinking document from firebase
+    // get one document from run collection
+//    fun getDrinkingDocument(eventHabitDrinking: HabitDrinking): Task<*> {
+//        return firestoreDB.collection("HabitDrinking").document("${eventHabitDrinking.id}").get()
+//            .addOnSuccessListener { document ->
+//                if (document != null) {
+//                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+//                } else {
+//                    Log.d(TAG, "No such document")
+//                }
+//            }
+//            .addOnFailureListener { exception ->
+//                Log.d(TAG, "get failed with ", exception)
+//            }
+//    }
+
+    // get one document from run collection
+//    fun getDrinkingDoc(id: String): Task<DocumentSnapshot> {
+//        return firestoreDB.collection("HabitRun").document("$id")
+//            .get()
+//            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+//            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+//    }
+
+    fun getDrinkingDoc(id: String):DocumentReference {
+        return firestoreDB.collection("HabitRun").document("$id")
+    }
+
+    
+
+    // get one habitMeditation document from firebase
+    fun getMeditationDocument(habitId: HabitMeditation): Task<DocumentSnapshot> {
+        return firestoreDB.collection("HabitMeditation").document("$habitId").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
+
+    // get one habitReading document from firebase
+    fun getReadingDocument(habitId: HabitReading): Task<DocumentSnapshot> {
+        return firestoreDB.collection("HabitReading").document("$habitId").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
+
+    // get one habitRun document from firebase
+    fun getRunDocument(habitId: HabitRun): Task<DocumentSnapshot> {
+        return firestoreDB.collection("HabitRun").document("$habitId").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
+
+    // get one habitSleep document from firebase
+    fun getSleepDocument(habitId: HabitSleep): Task<DocumentSnapshot> {
+        return firestoreDB.collection("HabitSleep").document("$habitId").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
+
+    // get one habitYoga document from firebase
+    fun getYogaDocument(habitId: HabitYoga): Task<DocumentSnapshot> {
+        return firestoreDB.collection("HabitYoga").document("$habitId").get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
+
+    //----------------------------update document----------------------------------------------//
+    fun updateHabitDrinking(eventHabitDrinking: HabitDrinking): Task<*> {
+        return firestoreDB.collection("HabitDrinking").document("${eventHabitDrinking.id}")
+            .set(eventHabitDrinking)
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+    }
+
+    // update habitMeditation
+    fun updateHabitMeditation(eventHabitMeditation: HabitMeditation): Task<*> {
+        return firestoreDB.collection("HabitMeditation").document("${eventHabitMeditation.id}")
+            .set(eventHabitMeditation)
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+    }
+
+    // update habitReading
+    fun updateHabitReading(eventHabitReading: HabitReading): Task<*> {
+        return firestoreDB.collection("HabitReading").document("${eventHabitReading.id}")
+            .set(eventHabitReading)
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+    }
+
+    // update habitRun
+    fun updateHabitRun(eventHabitRun: HabitRun): Task<*> {
+        return firestoreDB.collection("HabitRun").document("${eventHabitRun.id}")
+            .set(eventHabitRun)
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+    }
+
+    // update habitSleep
+    fun updateHabitSleep(eventHabitSleep: HabitSleep): Task<*> {
+        return firestoreDB.collection("HabitSleep").document("${eventHabitSleep.id}")
+            .set(eventHabitSleep)
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+    }
+
+    // update habitHabitYoga
+    fun updateHabitYoga(eventHabitHabitYoga: HabitYoga): Task<*> {
+        return firestoreDB.collection("HabitHabitYoga").document("${eventHabitHabitYoga.id}")
+            .set(eventHabitHabitYoga)
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
     }
 
 
-//    fun deleteRunHabit(docHabitRun: HabitRun): Task<Void> {
-//        var documentReference =  firestoreDB.collection("HabitRun")
-//            .document(addressItem.addressId)
-//
-//        return documentReference.delete()
-//    }
+    //----------------------------delete document----------------------------------------------//
+    fun deleteDrinking(habitId: HabitDrinking): Task<*> {
+        return firestoreDB.collection("HabitDrinking").document("$habitId")
+            .delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+    }
+
+    // delete habitMeditation
+    fun deleteMeditation(eventHabitMeditation: HabitMeditation): Task<*> {
+        return firestoreDB.collection("HabitMeditation").document("${eventHabitMeditation.id}")
+            .delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+    }
+
+    // delete habitReading
+    fun deleteReading(eventHabitReading: HabitReading): Task<*> {
+        return firestoreDB.collection("HabitReading").document("${eventHabitReading.id}")
+            .delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+    }
+    
+    // delete habitRun
+    fun deleteRun(eventHabitRun: HabitRun): Task<*> {
+        return firestoreDB.collection("HabitRun").document("${eventHabitRun.id}")
+            .delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+    }
+    
+    // delete habitSleep
+    fun deleteSleep(eventHabitSleep: HabitSleep): Task<*> {
+        return firestoreDB.collection("HabitSleep").document("${eventHabitSleep.id}")
+            .delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+    }
+
+    // delete habitYoga
+    fun deleteYoga(eventHabitYoga: HabitYoga): Task<*> {
+        return firestoreDB.collection("HabitYoga").document("${eventHabitYoga.id}")
+            .delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+    }
+
+
 }

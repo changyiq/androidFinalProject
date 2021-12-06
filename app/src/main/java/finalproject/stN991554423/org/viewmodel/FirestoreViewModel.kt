@@ -2,7 +2,9 @@ package finalproject.stN991554423.org.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.DocumentId
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.QuerySnapshot
 import finalproject.stN991554423.org.data.*
@@ -18,6 +20,8 @@ class FirestoreViewModel : ViewModel() {
     var savedHabitMeditation : MutableList<HabitMeditation>? = null
     var savedHabitYoga : MutableList<HabitYoga>? = null
 
+
+    //-----------------------------------add data------------------------------------------------//
     // save run habit to firebase
     fun saveRunToFirebase(runItem: HabitRun){
         firebaseRepository.saveNewRun(runItem)
@@ -48,11 +52,7 @@ class FirestoreViewModel : ViewModel() {
         firebaseRepository.saveNewDrinking(drinkingItem)
     }
 
-//    // update run habit to firestore
-//    fun updateRunToFirebase(runItem: HabitRun){
-//        firebaseRepository.updateRun(runItem)
-//    }
-
+    //---------------------------------retrieve collection---------------------------------------//
     // get realtime updates from firebase regarding saved habits
     fun getAllHabitRun(): MutableList<HabitRun>? {
         firebaseRepository.getRunCollection().addSnapshotListener(EventListener<QuerySnapshot> { value, e ->
@@ -161,16 +161,31 @@ class FirestoreViewModel : ViewModel() {
         })
         return savedHabitReading
     }
-}
 
-class FirestoreViewModelFactory(): ViewModelProvider.Factory{
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(FirestoreViewModel::class.java)){
-            @Suppress("UNCHECKED_CAST")
-            return FirestoreViewModel() as T
-        }
-        throw IllegalAccessException("Unknown ViewModel class")
+    //---------------------------------retrieve document---------------------------------------//
+    // retrieve habitDrinking document
+    fun getHabitDrinkingDoc(drinkingItem: HabitDrinking): DocumentReference {
+        return firebaseRepository.getDrinkingDoc(drinkingItem.id)
     }
 
+    //---------------------------------update document---------------------------------------//
+    fun updateHabitDrinkingDoc(habitId: HabitDrinking): Task<*> {
+        return firebaseRepository.updateHabitDrinking(habitId)
+    }
+    //---------------------------------delete document ---------------------------------------//
+    fun deleteHabitDrinkingDoc(habitId: HabitDrinking):Task<*>{
+        return firebaseRepository.deleteDrinking(habitId)
+    }
 }
+
+//class FirestoreViewModelFactory(): ViewModelProvider.Factory{
+//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+//        if(modelClass.isAssignableFrom(FirestoreViewModel::class.java)){
+//            @Suppress("UNCHECKED_CAST")
+//            return FirestoreViewModel() as T
+//        }
+//        throw IllegalAccessException("Unknown ViewModel class")
+//    }
+//
+//}
 
