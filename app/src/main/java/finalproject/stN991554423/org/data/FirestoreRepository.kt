@@ -246,48 +246,48 @@ class FirestoreRepository {
 
 
     //----------------------------delete document----------------------------------------------//
-    fun deleteDrinking(habitId: HabitDrinking): Task<*> {
-        return firestoreDB.collection("HabitDrinking").document("$habitId")
+    fun deleteDrinking(habitId: String): Task<*> {
+        return firestoreDB.collection("HabitDrinking").document(habitId)
             .delete()
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
     }
 
     // delete habitMeditation
-    fun deleteMeditation(eventHabitMeditation: HabitMeditation): Task<*> {
-        return firestoreDB.collection("HabitMeditation").document("${eventHabitMeditation.id}")
+    fun deleteMeditation(habitId: String): Task<*> {
+        return firestoreDB.collection("HabitMeditation").document(habitId)
             .delete()
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
     }
 
     // delete habitReading
-    fun deleteReading(eventHabitReading: HabitReading): Task<*> {
-        return firestoreDB.collection("HabitReading").document("${eventHabitReading.id}")
+    fun deleteReading(habitId: String): Task<*> {
+        return firestoreDB.collection("HabitReading").document(habitId)
             .delete()
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
     }
     
     // delete habitRun
-    fun deleteRun(eventHabitRun: HabitRun): Task<*> {
-        return firestoreDB.collection("HabitRun").document("${eventHabitRun.id}")
+    fun deleteRun(habitId: String): Task<*> {
+        return firestoreDB.collection("HabitRun").document(habitId)
             .delete()
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
     }
     
     // delete habitSleep
-    fun deleteSleep(eventHabitSleep: HabitSleep): Task<*> {
-        return firestoreDB.collection("HabitSleep").document("${eventHabitSleep.id}")
+    fun deleteSleep(habitId: String): Task<*> {
+        return firestoreDB.collection("HabitSleep").document(habitId)
             .delete()
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
     }
 
     // delete habitYoga
-    fun deleteYoga(eventHabitYoga: HabitYoga): Task<*> {
-        return firestoreDB.collection("HabitYoga").document("${eventHabitYoga.id}")
+    fun deleteYoga(habitId: String): Task<*> {
+        return firestoreDB.collection("HabitYoga").document(habitId)
             .delete()
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }

@@ -1,6 +1,7 @@
 package finalproject.stN991554423.org.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -66,11 +67,91 @@ class HabitDetailFragment : Fragment() {
             imageView.setImageResource(R.drawable.water)
             habitName.text = "Drink Water"
             habitAttr1Label.text = "Date:"
-            habitAttr1.text = habitDrikning?.drinkingDate.toString()
+            habitAttr1.text = navigationArgs.habitField1
             habitAttr2Label.text = "Frequency:"
-            habitAttr2.text = habitDrikning?.drinkingFrequency.toString()
+            habitAttr2.text = navigationArgs.habitField2
             habitAttr3Label.text = "Consumption:"
-            habitAttr3.text = habitDrikning?.drinkingConsumption.toString()
+            habitAttr3.text = navigationArgs.habitField3
+
+            deleteHabit.setOnClickListener { showConfirmationDialog() }
+            editHabit.setOnClickListener { editHabitDrinkingItem() }
+        }
+    }
+
+    private fun habitSleepBind() {
+        binding.apply {
+            imageView.setImageResource(R.drawable.waking_up)
+            habitName.text = "Sleep"
+            habitAttr1Label.text = "Date:"
+            habitAttr1.text = navigationArgs.habitField1
+            habitAttr2Label.text = "Time:"
+            habitAttr2.text = navigationArgs.habitField2
+            habitAttr3Label.text = "Duration:"
+            habitAttr3.text = navigationArgs.habitField3
+
+            deleteHabit.setOnClickListener { showConfirmationDialog() }
+            editHabit.setOnClickListener { editHabitDrinkingItem() }
+        }
+    }
+
+    private fun habitRunBind() {
+        binding.apply {
+            imageView.setImageResource(R.drawable.running)
+            habitName.text = "Running"
+            habitAttr1Label.text = "Date:"
+            habitAttr1.text = navigationArgs.habitField1
+            habitAttr2Label.text = "Time:"
+            habitAttr2.text = navigationArgs.habitField2
+            habitAttr3Label.text = "Distance:"
+            habitAttr3.text = navigationArgs.habitField3
+
+            deleteHabit.setOnClickListener { showConfirmationDialog() }
+            editHabit.setOnClickListener { editHabitDrinkingItem() }
+        }
+    }
+
+    private fun habitYogaBind() {
+        binding.apply {
+            imageView.setImageResource(R.drawable.yoga)
+            habitName.text = "Yoga"
+            habitAttr1Label.text = "Date:"
+            habitAttr1.text = navigationArgs.habitField1
+            habitAttr2Label.text = "Time:"
+            habitAttr2.text = navigationArgs.habitField2
+            habitAttr3Label.text = "Duration:"
+            habitAttr3.text = navigationArgs.habitField3
+
+            deleteHabit.setOnClickListener { showConfirmationDialog() }
+            editHabit.setOnClickListener { editHabitDrinkingItem() }
+        }
+    }
+
+    private fun habitReadingBind() {
+        binding.apply {
+            imageView.setImageResource(R.drawable.book)
+            habitName.text = "Reading"
+            habitAttr1Label.text = "Date:"
+            habitAttr1.text = navigationArgs.habitField1
+            habitAttr2Label.text = "Time:"
+            habitAttr2.text = navigationArgs.habitField2
+            habitAttr3Label.text = "Duration:"
+            habitAttr3.text = navigationArgs.habitField3
+
+            deleteHabit.setOnClickListener { showConfirmationDialog() }
+            editHabit.setOnClickListener { editHabitDrinkingItem() }
+        }
+    }
+
+    private fun habitMeditationBind() {
+        binding.apply {
+            imageView.setImageResource(R.drawable.meditation)
+            habitName.text = "Meditation"
+            habitAttr1Label.text = "Date:"
+            habitAttr1.text = navigationArgs.habitField1
+            habitAttr2Label.text = "Time:"
+            habitAttr2.text = navigationArgs.habitField2
+            habitAttr3Label.text = "Duration:"
+            habitAttr3.text = navigationArgs.habitField3
 
             deleteHabit.setOnClickListener { showConfirmationDialog() }
             editHabit.setOnClickListener { editHabitDrinkingItem() }
@@ -84,9 +165,11 @@ class HabitDetailFragment : Fragment() {
         this.findNavController().navigate(action)
     }
 
-    private fun deleteHabitDrinkingItem() {
-        //firestoreViewModel.deleteHabitDrinkingDoc(habitDrikning.id)
-        findNavController().navigateUp()
+    private fun deleteHabitItem() {
+        Log.e("ID:", navigationArgs.habitId)
+        firestoreViewModel.deleteHabitDoc(habitId = navigationArgs.habitId)
+        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToHabitListFragment()
+        this.findNavController().navigate(action)
     }
 
     private fun showConfirmationDialog() {
@@ -96,7 +179,7 @@ class HabitDetailFragment : Fragment() {
             .setCancelable(false)
             .setNegativeButton(getString(R.string.no)) { _, _ -> }
             .setPositiveButton(getString(R.string.yes)) { _, _ ->
-                deleteHabitDrinkingItem()
+                deleteHabitItem()
             }
             .show()
     }
@@ -107,15 +190,19 @@ class HabitDetailFragment : Fragment() {
         id = navigationArgs.habitId
 
         if (id.toLong() in 0..10000000) {
+            habitRunBind()
         }
 
         if (id.toLong() in 10000001..20000000) {
+            habitMeditationBind()
         }
 
         if (id.toLong() in 20000001..30000000) {
+            habitReadingBind()
         }
 
         if (id.toLong() in 30000001..40000000) {
+            habitSleepBind()
         }
 
         if (id.toLong() in 40000001..50000000) {
@@ -123,6 +210,7 @@ class HabitDetailFragment : Fragment() {
         }
 
         if (id.toLong() in 50000001..60000000) {
+            habitYogaBind()
         }
 
     }

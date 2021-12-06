@@ -51,13 +51,13 @@
             android:name="habit_id"
             app:argType="string" />
         <argument
+            android:name="habit_field1"
+            app:argType="string" />
+        <argument
             android:name="habit_field2"
             app:argType="string" />
         <argument
             android:name="habit_field3"
-            app:argType="string" />
-        <argument
-            android:name="habit_field1"
             app:argType="string" />
     </fragment>
     <fragment

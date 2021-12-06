@@ -173,8 +173,33 @@ class FirestoreViewModel : ViewModel() {
         return firebaseRepository.updateHabitDrinking(habitId)
     }
     //---------------------------------delete document ---------------------------------------//
-    fun deleteHabitDrinkingDoc(habitId: HabitDrinking):Task<*>{
-        return firebaseRepository.deleteDrinking(habitId)
+    fun deleteHabitDoc(habitId: String){
+        when {
+            habitId.toLong() in 0..10000000 -> {
+                //habitRunBind()
+                firebaseRepository.deleteRun(habitId)
+            }
+            habitId.toLong() in 10000001..20000000 -> {
+                //habitMeditationBind()
+                firebaseRepository.deleteMeditation(habitId)
+            }
+            habitId.toLong() in 20000001..30000000 -> {
+                //habitReadingBind()
+                firebaseRepository.deleteReading(habitId)
+            }
+            habitId.toLong() in 30000001..40000000 -> {
+                //habitSleepBind()
+                firebaseRepository.deleteSleep(habitId)
+            }
+            habitId.toLong() in 40000001..50000000 -> {
+                firebaseRepository.deleteDrinking(habitId)
+            }
+            habitId.toLong() in 50000001..60000000 -> {
+                //habitYogaBind()
+                firebaseRepository.deleteYoga(habitId)
+            }
+        }
+
     }
 }
 
