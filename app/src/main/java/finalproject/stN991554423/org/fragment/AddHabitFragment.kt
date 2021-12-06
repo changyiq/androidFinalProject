@@ -45,18 +45,6 @@ class AddHabitFragment() : Fragment() {
         return binding.root
     }
 
-    // 1205 added____________________________________
-
-
-
-
-
-
-
-
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         /*
@@ -167,6 +155,7 @@ class AddHabitFragment() : Fragment() {
                 habitDrinking.drinkingConsumption = inputField3.text.toString().toDouble()
                 habitDrinking.id = (40000001..50000000).random().toString()
                 firestoreViewModel.saveDrinkingToFirebase(habitDrinking)
+
             } else if (type == "Yoga") {
                 val habitYoga = HabitYoga()
                 habitYoga.yogaDate = inputField1.text.toString()
@@ -175,31 +164,26 @@ class AddHabitFragment() : Fragment() {
                 habitYoga.id = (50000001..60000000).random().toString()
                 firestoreViewModel.saveYogaToFirebase(habitYoga)
             }
-
             val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment()
             // navigate back to list fragment
             this.findNavController().navigate(action)
         }
 
-        fun updateDocument() {
-
-            if (type == "Drinking") {
-                val habitDrinking = HabitDrinking()
-                habitDrinking.drinkingDate = inputField1.text.toString()
-                habitDrinking.drinkingFrequency = inputField2.text.toString().toInt()
-                habitDrinking.drinkingConsumption = inputField3.text.toString().toDouble()
-                habitDrinking.id = (40000001..50000000).random().toString()
-                this.navigationArgs.habitId
-                firestoreViewModel.updateHabitDrinkingDoc(habitDrinking)
-
-                val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment()
-                // navigate back to list fragment
-                this.findNavController().navigate(action)
-
-            }
-
-
-        }
+//        fun updateHabitDrinkingDoc() {
+//
+//            if (type == "Drinking") {
+//                val habitDrinking = HabitDrinking()
+//                habitDrinking.drinkingDate = inputField1.text.toString()
+//                habitDrinking.drinkingFrequency = inputField2.text.toString().toInt()
+//                habitDrinking.drinkingConsumption = inputField3.text.toString().toDouble()
+//                habitDrinking.id = (40000001..50000000).random().toString()
+//                this.navigationArgs.habitId
+//                firestoreViewModel.updateHabitDrinking(habitId = navigationArgs.habitId, )
+//                val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment()
+//                // navigate back to list fragment
+//                this.findNavController().navigate(action)
+//            }
+//        }
 
     }
 

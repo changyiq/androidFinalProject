@@ -36,9 +36,9 @@ class HabitDetailFragment : Fragment() {
 
     var id = ""
 
-    // this is only for test because the getDocument methods doesn't work
-    var habitDrikning: HabitDrinking? = null
-    //var habitDrikning: HabitDrinking = firestoreViewModel.getHabitDrinkingDoc()
+
+     //var habitDrinking = firestoreViewModel.getHabitDrinkingDoc(habitId = navigationArgs.habitId)
+    var habitDrinking: HabitDrinking? = null
 
     lateinit var habitMeditation: HabitMeditation
     lateinit var habitReading: HabitReading
@@ -159,9 +159,14 @@ class HabitDetailFragment : Fragment() {
     }
 
     private fun editHabitDrinkingItem() {
-        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToAddHabitFragment(
-            //habitDrikning.id
-        )
+        //var habitDrinking: HabitDrinking
+        Log.e("ID:", navigationArgs.habitId)
+        habitDrinking?.let {
+            firestoreViewModel.updateHabitDrinking(
+                habitId = navigationArgs.habitId, habitDrinking
+            )
+        }
+        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToAddHabitFragment()
         this.findNavController().navigate(action)
     }
 

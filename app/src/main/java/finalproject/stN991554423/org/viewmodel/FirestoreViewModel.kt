@@ -3,8 +3,6 @@ package finalproject.stN991554423.org.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.DocumentId
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.QuerySnapshot
 import finalproject.stN991554423.org.data.*
@@ -164,13 +162,45 @@ class FirestoreViewModel : ViewModel() {
 
     //---------------------------------retrieve document---------------------------------------//
     // retrieve habitDrinking document
-    fun getHabitDrinkingDoc(drinkingItem: HabitDrinking): DocumentReference {
-        return firebaseRepository.getDrinkingDoc(drinkingItem.id)
+    fun getHabitDrinkingDoc(habitId: String): Task<*> {
+        return firebaseRepository.getDrinkingDoc(habitId)
     }
 
+
     //---------------------------------update document---------------------------------------//
-    fun updateHabitDrinkingDoc(habitId: HabitDrinking): Task<*> {
-        return firebaseRepository.updateHabitDrinking(habitId)
+//    fun updateHabitDoc(habitId: String){
+//        when {
+//            habitId.toLong() in 0..10000000 -> {
+//                //habitRunBind()
+//                firebaseRepository.deleteRun(habitId)
+//            }
+//            habitId.toLong() in 10000001..20000000 -> {
+//                //habitMeditationBind()
+//                firebaseRepository.deleteMeditation(habitId)
+//            }
+//            habitId.toLong() in 20000001..30000000 -> {
+//                //habitReadingBind()
+//                firebaseRepository.deleteReading(habitId)
+//            }
+//            habitId.toLong() in 30000001..40000000 -> {
+//                //habitSleepBind()
+//                firebaseRepository.deleteSleep(habitId)
+//            }
+//            habitId.toLong() in 40000001..50000000 -> {
+//                firebaseRepository.deleteDrinking(habitId)
+//            }
+//            habitId.toLong() in 50000001..60000000 -> {
+//                //habitYogaBind()
+//                firebaseRepository.deleteYoga(habitId)
+//            }
+//        }
+//    } 
+    fun updateHabitDrinking(habitId: String, drinkingItem: HabitDrinking?){
+        if( habitId.toLong() in 40000001..50000000 ){
+            if (drinkingItem != null) {
+                firebaseRepository.updateHabitDrinking(habitId, drinkingItem)
+            }
+        }
     }
     //---------------------------------delete document ---------------------------------------//
     fun deleteHabitDoc(habitId: String){
