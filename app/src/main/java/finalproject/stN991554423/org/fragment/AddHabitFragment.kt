@@ -22,12 +22,8 @@ class AddHabitFragment() : Fragment() {
 
     private val firestoreViewModel: FirestoreViewModel by activityViewModels()
 
-    private val navigationArgs: HabitDetailFragmentArgs by navArgs()
-
     private var _binding: FragmentAddHabitBinding? = null
     private val binding get() = _binding!!
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -168,22 +164,6 @@ class AddHabitFragment() : Fragment() {
             // navigate back to list fragment
             this.findNavController().navigate(action)
         }
-
-//        fun updateHabitDrinkingDoc() {
-//
-//            if (type == "Drinking") {
-//                val habitDrinking = HabitDrinking()
-//                habitDrinking.drinkingDate = inputField1.text.toString()
-//                habitDrinking.drinkingFrequency = inputField2.text.toString().toInt()
-//                habitDrinking.drinkingConsumption = inputField3.text.toString().toDouble()
-//                habitDrinking.id = (40000001..50000000).random().toString()
-//                this.navigationArgs.habitId
-//                firestoreViewModel.updateHabitDrinking(habitId = navigationArgs.habitId, )
-//                val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment()
-//                // navigate back to list fragment
-//                this.findNavController().navigate(action)
-//            }
-//        }
 
     }
 

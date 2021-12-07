@@ -36,16 +36,6 @@ class HabitDetailFragment : Fragment() {
 
     var id = ""
 
-
-     //var habitDrinking = firestoreViewModel.getHabitDrinkingDoc(habitId = navigationArgs.habitId)
-    var habitDrinking: HabitDrinking? = null
-
-    lateinit var habitMeditation: HabitMeditation
-    lateinit var habitReading: HabitReading
-    lateinit var habitRun: HabitRun
-    lateinit var habitSleep: HabitSleep
-    lateinit var habitYoga: HabitYoga
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -74,7 +64,7 @@ class HabitDetailFragment : Fragment() {
             habitAttr3.text = navigationArgs.habitField3
 
             deleteHabit.setOnClickListener { showConfirmationDialog() }
-            editHabit.setOnClickListener { editHabitDrinkingItem() }
+            editHabit.setOnClickListener { editHabitItem() }
         }
     }
 
@@ -90,7 +80,7 @@ class HabitDetailFragment : Fragment() {
             habitAttr3.text = navigationArgs.habitField3
 
             deleteHabit.setOnClickListener { showConfirmationDialog() }
-            editHabit.setOnClickListener { editHabitDrinkingItem() }
+            editHabit.setOnClickListener { editHabitItem() }
         }
     }
 
@@ -106,7 +96,7 @@ class HabitDetailFragment : Fragment() {
             habitAttr3.text = navigationArgs.habitField3
 
             deleteHabit.setOnClickListener { showConfirmationDialog() }
-            editHabit.setOnClickListener { editHabitDrinkingItem() }
+            editHabit.setOnClickListener { editHabitItem() }
         }
     }
 
@@ -122,7 +112,7 @@ class HabitDetailFragment : Fragment() {
             habitAttr3.text = navigationArgs.habitField3
 
             deleteHabit.setOnClickListener { showConfirmationDialog() }
-            editHabit.setOnClickListener { editHabitDrinkingItem() }
+            editHabit.setOnClickListener { editHabitItem() }
         }
     }
 
@@ -138,7 +128,7 @@ class HabitDetailFragment : Fragment() {
             habitAttr3.text = navigationArgs.habitField3
 
             deleteHabit.setOnClickListener { showConfirmationDialog() }
-            editHabit.setOnClickListener { editHabitDrinkingItem() }
+            editHabit.setOnClickListener { editHabitItem() }
         }
     }
 
@@ -154,19 +144,13 @@ class HabitDetailFragment : Fragment() {
             habitAttr3.text = navigationArgs.habitField3
 
             deleteHabit.setOnClickListener { showConfirmationDialog() }
-            editHabit.setOnClickListener { editHabitDrinkingItem() }
+            editHabit.setOnClickListener { editHabitItem() }
         }
     }
 
-    private fun editHabitDrinkingItem() {
-        //var habitDrinking: HabitDrinking
+    private fun editHabitItem() {
         Log.e("ID:", navigationArgs.habitId)
-        habitDrinking?.let {
-            firestoreViewModel.updateHabitDrinking(
-                habitId = navigationArgs.habitId, habitDrinking
-            )
-        }
-        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToAddHabitFragment()
+        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToEditHabitFragment(navigationArgs.habitId,navigationArgs.habitField1,navigationArgs.habitField2,navigationArgs.habitField3)
         this.findNavController().navigate(action)
     }
 
