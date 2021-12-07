@@ -1,6 +1,7 @@
 package finalproject.stN991554423.org.fragment
 
 import android.annotation.SuppressLint
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -23,9 +24,6 @@ class HabitListFragment : Fragment() {
     private var _binding: HabitListFragmentBinding? = null
     private lateinit var viewModel: HabitListViewModel
 
-//    private var firestoreRepository: FirestoreRepository? = null
-
-    //    val firestoreViewModel = ViewModelProviders.of(this)[FirestoreViewModel::class.java]
     private val firestoreViewModel: FirestoreViewModel by activityViewModels()
 
     // with the backing property of the kotlin we extract
@@ -38,17 +36,22 @@ class HabitListFragment : Fragment() {
     ): View? {
         _binding = HabitListFragmentBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
+
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
+
         return binding.root
     }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
-        binding.recyclerView.setHasFixedSize(true)
 
         // button click event to trigger database data fetching
         binding.btnRun.setOnClickListener {
+            binding.tvViewList.visibility = View.INVISIBLE
+            binding.recyclerView.visibility = View.VISIBLE
+
             val list = firestoreViewModel.getAllHabitRun()
             binding.habitAttr1Label.text = "Date"
             binding.habitAttr2Label.text = "Time"
@@ -68,6 +71,9 @@ class HabitListFragment : Fragment() {
         }
 
         binding.btnDrinking.setOnClickListener {
+            binding.tvViewList.visibility = View.INVISIBLE
+            binding.recyclerView.visibility = View.VISIBLE
+
             val list = firestoreViewModel.getAllHabitDrinking()
             binding.habitAttr1Label.text = "Date"
             binding.habitAttr2Label.text = "Frequency"
@@ -87,6 +93,9 @@ class HabitListFragment : Fragment() {
         }
 
         binding.btnMeditation.setOnClickListener {
+            binding.tvViewList.visibility = View.INVISIBLE
+            binding.recyclerView.visibility = View.VISIBLE
+
             val list = firestoreViewModel.getAllHabitMeditation()
             binding.habitAttr1Label.text = "Date"
             binding.habitAttr2Label.text = "Time"
@@ -106,6 +115,9 @@ class HabitListFragment : Fragment() {
         }
 
         binding.btnReading.setOnClickListener {
+            binding.tvViewList.visibility = View.INVISIBLE
+            binding.recyclerView.visibility = View.VISIBLE
+
             val list = firestoreViewModel.getAllHabitReading()
             binding.habitAttr1Label.text = "Date"
             binding.habitAttr2Label.text = "Time"
@@ -125,6 +137,9 @@ class HabitListFragment : Fragment() {
         }
 
         binding.btnSleep.setOnClickListener {
+            binding.tvViewList.visibility = View.INVISIBLE
+            binding.recyclerView.visibility = View.VISIBLE
+
             val list = firestoreViewModel.getAllHabitSleep()
             binding.habitAttr1Label.text = "Date"
             binding.habitAttr2Label.text = "Time"
@@ -144,6 +159,9 @@ class HabitListFragment : Fragment() {
         }
 
         binding.btnYoga.setOnClickListener {
+            binding.tvViewList.visibility = View.INVISIBLE
+            binding.recyclerView.visibility = View.VISIBLE
+
             val list = firestoreViewModel.getAllHabitYoga()
             binding.habitAttr1Label.text = "Date"
             binding.habitAttr2Label.text = "Time"
@@ -220,6 +238,7 @@ class HabitListFragment : Fragment() {
 
 
 }
+
 
 
 
