@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin"
+    tools:context=".fragment.HelpFragment">
+
+
+    <TextView
+        android:id="@+id/project_title"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="215dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/help_imageView"
+        android:text="@string/project_title" />
+
+
+    <TextView
+        android:id="@+id/user_guide_title"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="212dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:textAlignment="textStart"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/project_title"
+        android:text="@string/user_guide_title" />
+
+    <TextView
+        android:id="@+id/user_guide_content"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="327dp"
+        android:layout_height="202dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_guide_title"
+        android:text="@string/user_guide_content" />
+
+    <ImageView
+        android:id="@+id/help_imageView"
+        android:layout_width="378dp"
+        android:layout_height="151dp"
+        android:contentDescription="Help_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/help" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

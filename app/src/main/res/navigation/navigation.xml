@@ -35,6 +35,12 @@
         <action
             android:id="@+id/action_habitListFragment_to_MainFragment"
             app:destination="@id/MainFragment" />
+        <action
+            android:id="@+id/action_habitListFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_habitListFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
     </fragment>
     <fragment
         android:id="@+id/habitDetailFragment"
@@ -62,6 +68,12 @@
         <action
             android:id="@+id/action_habitDetailFragment_to_editHabitFragment"
             app:destination="@id/editHabitFragment" />
+        <action
+            android:id="@+id/action_habitDetailFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_habitDetailFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
     </fragment>
     <fragment
         android:id="@+id/addHabitFragment"
@@ -91,5 +103,29 @@
         <argument
             android:name="habit_field3"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="finalproject.stN991554423.org.fragment.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" >
+        <action
+            android:id="@+id/action_aboutFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_aboutFragment_to_habitListFragment"
+            app:destination="@id/habitListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="finalproject.stN991554423.org.fragment.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" >
+        <action
+            android:id="@+id/action_helpFragment_to_habitListFragment"
+            app:destination="@id/habitListFragment" />
+        <action
+            android:id="@+id/action_helpFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
 </navigation>

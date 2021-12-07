@@ -3,8 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_list"
+        android:id="@+id/action_display_list"
         android:title="@string/check_list" />
+
+    <item
+        android:id="@+id/action_help"
+        android:title="@string/user_guide_menu" />
 
     <item
         android:id="@+id/action_logout"

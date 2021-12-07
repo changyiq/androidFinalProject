@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Daily Habit Tracker</string>
+    <string name="app_name">Habit Tracker</string>
 
     <!-- default login strings, can be deleted later -->
     <string name="prompt_email">Email</string>
@@ -65,6 +65,19 @@
     <string name="delete_question">Are you sure you want to delete?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+
+    <!---help fragment -->
+    <string name="project_title">Habit Tracker</string>
+    <string name="user_guide_title">How it works?</string>
+    <string name="user_guide_content">"Click  the "+" button to record a habit. \n\nClick buttons on the top to select habit, it will display all the habit history accordingly. \n\nClick each history log to edit and update the information."</string>
+
+    <!---about fragment -->
+    <string name="developer_intro">This project is developed by \n\nQingqing Wu \n\nYiqian Chang</string>
+
+    <!--- menu options -->
+    <string name="about_us">About us</string>
+    <string name="user_guide_menu">Get help</string>
+
 
 
 </resources>

@@ -17,16 +17,6 @@ import finalproject.stN991554423.org.databinding.FragmentAddHabitBinding
 import finalproject.stN991554423.org.databinding.FragmentEditHabitBinding
 import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [EditHabitFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EditHabitFragment : Fragment() {
 
     private val firestoreViewModel: FirestoreViewModel by activityViewModels()

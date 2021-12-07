@@ -10,21 +10,9 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import finalproject.stN991554423.org.R
-import finalproject.stN991554423.org.data.*
 import finalproject.stN991554423.org.databinding.FragmentHabitDetailBinding
 import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//private const val ARG_PARAM1 = "param1"
-//private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HabitDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HabitDetailFragment : Fragment() {
 
     private val firestoreViewModel: FirestoreViewModel by activityViewModels()
@@ -71,7 +59,7 @@ class HabitDetailFragment : Fragment() {
     private fun habitSleepBind() {
         binding.apply {
             imageView.setImageResource(R.drawable.waking_up)
-            habitName.text = "Sleep"
+            habitName.text = "Sleep Early"
             habitAttr1Label.text = "Date:"
             habitAttr1.text = navigationArgs.habitField1
             habitAttr2Label.text = "Time:"
@@ -150,7 +138,12 @@ class HabitDetailFragment : Fragment() {
 
     private fun editHabitItem() {
         Log.e("ID:", navigationArgs.habitId)
-        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToEditHabitFragment(navigationArgs.habitId,navigationArgs.habitField1,navigationArgs.habitField2,navigationArgs.habitField3)
+        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToEditHabitFragment(
+            navigationArgs.habitId,
+            navigationArgs.habitField1,
+            navigationArgs.habitField2,
+            navigationArgs.habitField3
+        )
         this.findNavController().navigate(action)
     }
 
@@ -206,29 +199,42 @@ class HabitDetailFragment : Fragment() {
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.detail_menu, menu)
+        inflater.inflate(R.menu.habit_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.action_help -> {
+                displayUserGuide()
+                true
+            }
+
+            R.id.action_about->{
+                displayAboutUs()
+                true
+            }
+
             R.id.action_logout -> {
                 logout()
                 true
             }
-            // only for test
-//            R.id.action_list -> {
-//                checkList()
-//                true
-//            }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    private fun displayUserGuide() {
+        val action = AboutFragmentDirections.actionAboutFragmentToHelpFragment()
+        this.findNavController().navigate(action)
+    }
+
+    private fun displayAboutUs() {
+        val action = HelpFragmentDirections.actionHelpFragmentToAboutFragment()
+        this.findNavController().navigate(action)
+    }
 
     fun logout() {
-
         val action = HabitListFragmentDirections.actionHabitListFragmentToMainFragment()
-
         this.findNavController().navigate(action)
         FirebaseAuth.getInstance().signOut()
     }

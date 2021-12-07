@@ -19,11 +19,6 @@ import finalproject.stN991554423.org.viewmodel.HabitListViewModel
 const val TAG = "FIRESTORE"
 
 class HabitListFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = HabitListFragment()
-    }
-
     // properties
     private var _binding: HabitListFragmentBinding? = null
     private lateinit var viewModel: HabitListViewModel
@@ -43,8 +38,6 @@ class HabitListFragment : Fragment() {
     ): View? {
         _binding = HabitListFragmentBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
-
-
         return binding.root
     }
 
@@ -54,7 +47,6 @@ class HabitListFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
         binding.recyclerView.setHasFixedSize(true)
 
-
         // button click event to trigger database data fetching
         binding.btnRun.setOnClickListener {
             val list = firestoreViewModel.getAllHabitRun()
@@ -63,7 +55,12 @@ class HabitListFragment : Fragment() {
             binding.habitAttr3Label.text = "Distance"
             val adapter = HabitRunItemListAdapter {
                 val action =
-                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(it.id,it.runDate,it.runTime,it.runDistance.toString())
+                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(
+                        it.id,
+                        it.runDate,
+                        it.runTime,
+                        it.runDistance.toString()
+                    )
                 this.findNavController().navigate(action)
             }
             binding.recyclerView.adapter = adapter
@@ -77,7 +74,12 @@ class HabitListFragment : Fragment() {
             binding.habitAttr3Label.text = "Consumption"
             val adapter = HabitDrinkingItemListAdapter {
                 val action =
-                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(it.id,it.drinkingDate,it.drinkingFrequency.toString(),it.drinkingConsumption.toString())
+                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(
+                        it.id,
+                        it.drinkingDate,
+                        it.drinkingFrequency.toString(),
+                        it.drinkingConsumption.toString()
+                    )
                 this.findNavController().navigate(action)
             }
             binding.recyclerView.adapter = adapter
@@ -91,7 +93,12 @@ class HabitListFragment : Fragment() {
             binding.habitAttr3Label.text = "Duration"
             val adapter = HabitMeditationItemListAdapter {
                 val action =
-                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(it.id,it.meditationDate,it.meditationTime,it.meditationDuration.toString())
+                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(
+                        it.id,
+                        it.meditationDate,
+                        it.meditationTime,
+                        it.meditationDuration.toString()
+                    )
                 this.findNavController().navigate(action)
             }
             binding.recyclerView.adapter = adapter
@@ -105,7 +112,12 @@ class HabitListFragment : Fragment() {
             binding.habitAttr3Label.text = "Duration"
             val adapter = HabitReadingItemListAdapter {
                 val action =
-                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(it.id,it.readingDate,it.readingTime,it.readingDuration.toString())
+                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(
+                        it.id,
+                        it.readingDate,
+                        it.readingTime,
+                        it.readingDuration.toString()
+                    )
                 this.findNavController().navigate(action)
             }
             binding.recyclerView.adapter = adapter
@@ -119,7 +131,12 @@ class HabitListFragment : Fragment() {
             binding.habitAttr3Label.text = "Duration"
             val adapter = HabitSleepItemListAdapter {
                 val action =
-                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(it.id,it.sleepDate,it.sleepTime,it.sleepDuration.toString())
+                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(
+                        it.id,
+                        it.sleepDate,
+                        it.sleepTime,
+                        it.sleepDuration.toString()
+                    )
                 this.findNavController().navigate(action)
             }
             binding.recyclerView.adapter = adapter
@@ -133,7 +150,12 @@ class HabitListFragment : Fragment() {
             binding.habitAttr3Label.text = "Duration"
             val adapter = HabitYogaItemListAdapter {
                 val action =
-                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(it.id,it.yogaDate,it.yogaTime,it.yogaDuration.toString())
+                    HabitListFragmentDirections.actionHabitListFragmentToHabitDetailFragment(
+                        it.id,
+                        it.yogaDate,
+                        it.yogaTime,
+                        it.yogaDuration.toString()
+                    )
                 this.findNavController().navigate(action)
             }
             binding.recyclerView.adapter = adapter
@@ -148,22 +170,45 @@ class HabitListFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu, menu)
+        inflater.inflate(R.menu.habit_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.action_help -> {
+                displayUserGuide()
+                true
+            }
+
+            R.id.action_about->{
+                displayAboutUs()
+                true
+            }
+
+
             R.id.action_logout -> {
                 logout()
                 true
             }
-            // only for test
-            R.id.action_detail -> {
-                checkDeatil()
-                true
-            }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun displayAboutUs() {
+        val action = HabitListFragmentDirections.actionHabitListFragmentToAboutFragment()
+        this.findNavController().navigate(action)
+    }
+
+    private fun displayUserGuide() {
+        val action = HabitListFragmentDirections.actionHabitListFragmentToHelpFragment()
+        this.findNavController().navigate(action)
+    }
+
+    fun logout() {
+        val action = HabitListFragmentDirections.actionHabitListFragmentToMainFragment()
+
+        this.findNavController().navigate(action)
+        FirebaseAuth.getInstance().signOut()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -172,17 +217,8 @@ class HabitListFragment : Fragment() {
 
     }
 
-    fun logout() {
 
-        val action = HabitListFragmentDirections.actionHabitListFragmentToMainFragment()
 
-        this.findNavController().navigate(action)
-        FirebaseAuth.getInstance().signOut()
-    }
-
-    fun checkDeatil() {
-
-    }
 }
 
 
