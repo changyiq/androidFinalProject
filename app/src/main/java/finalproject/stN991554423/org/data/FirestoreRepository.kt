@@ -94,27 +94,6 @@ class FirestoreRepository {
         return firestoreDB.collection("HabitYoga")
     }
 
-    //----------------------------retrieve document---------------------------------------------//
-    // get one habitDrinking document from firebase
-
-//    fun getDrinkingDoc(habitId: String): DocumentReference {
-//        return firestoreDB.collection("HabitDrinking").document(habitId)
-//    }
-
-    fun getDrinkingDoc(habitId: String): Task<*> {
-        return firestoreDB.collection("HabitRun").document(habitId).get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                } else {
-                    Log.d(TAG, "No such document")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
-    }
-
     // get one habitMeditation document from firebase
     fun getMeditationDocument(habitId: HabitMeditation): Task<DocumentSnapshot> {
         return firestoreDB.collection("HabitMeditation").document("$habitId").get()
@@ -191,52 +170,50 @@ class FirestoreRepository {
     }
 
     //----------------------------update document----------------------------------------------//
-    fun updateHabitDrinking(habitId: String, eventHabitDrinking: HabitDrinking): Task<*> {
-        return firestoreDB.collection("HabitDrinking").document(habitId)
-            //.update(eventHabitDrinking.drinkingDate,eventHabitDrinking.drinkingFrequency,eventHabitDrinking.drinkingConsumption)
-            .set(eventHabitDrinking)
+    // update run
+    fun updateHabitRun(habitId: String, habit: HabitRun): Task<*> {
+        return firestoreDB.collection("HabitRun").document(habitId)
+            .set(habit)
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
     }
 
-
-
     // update habitMeditation
-    fun updateHabitMeditation(habitId: String, eventHabitMeditation: HabitMeditation): Task<*> {
+    fun updateHabitMeditation(habitId: String, habit: HabitMeditation): Task<*> {
         return firestoreDB.collection("HabitMeditation").document(habitId)
-            .update(habitId, eventHabitMeditation)
+            .set(habit)
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
     }
 
     // update habitReading
-    fun updateHabitReading(habitId: String, eventHabitReading: HabitReading): Task<*> {
+    fun updateHabitReading(habitId: String, habit: HabitReading): Task<*> {
         return firestoreDB.collection("HabitReading").document(habitId)
-            .update(habitId, eventHabitReading)
+            .set(habit)
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
     }
 
-    // update habitRun
-    fun updateHabitRun(habitId: String, eventHabitRun: HabitRun): Task<*> {
-        return firestoreDB.collection("HabitRun").document(habitId)
-            .update(habitId, eventHabitRun)
+    // update habitDrinking
+    fun updateHabitDrinking(habitId: String, habit: HabitDrinking): Task<*> {
+        return firestoreDB.collection("HabitDrinking").document(habitId)
+            .set(habit)
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
     }
 
     // update habitSleep
-    fun updateHabitSleep(habitId: String, eventHabitSleep: HabitSleep): Task<*> {
+    fun updateHabitSleep(habitId: String, habit: HabitSleep): Task<*> {
         return firestoreDB.collection("HabitSleep").document(habitId)
-            .update(habitId, eventHabitSleep)
+            .set(habit)
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
     }
 
     // update habitHabitYoga
-    fun updateHabitYoga(habitId: String, eventHabitYoga: HabitYoga): Task<*> {
+    fun updateHabitYoga(habitId: String, habit: HabitYoga): Task<*> {
         return firestoreDB.collection("HabitYoga").document(habitId)
-            .update(eventHabitYoga.yogaDate, eventHabitYoga.yogaTime, eventHabitYoga.yogaDuration)
+            .set(habit)
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
     }
