@@ -59,6 +59,9 @@
         <argument
             android:name="habit_field3"
             app:argType="string" />
+        <action
+            android:id="@+id/action_habitDetailFragment_to_editHabitFragment"
+            app:destination="@id/editHabitFragment" />
     </fragment>
     <fragment
         android:id="@+id/addHabitFragment"
@@ -68,5 +71,25 @@
         <action
             android:id="@+id/action_addHabitFragment_to_habitListFragment"
             app:destination="@id/habitListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editHabitFragment"
+        android:name="finalproject.stN991554423.org.fragment.EditHabitFragment"
+        android:label="fragment_edit_habit"
+        tools:layout="@layout/fragment_edit_habit" >
+        <action
+            android:id="@+id/action_editHabitFragment_to_habitListFragment"
+            app:destination="@id/habitListFragment" />
+        <argument
+            android:name="habit_id"
+            app:argType="string" />
+        <argument android:name="habit_field1"
+            app:argType="string" />
+        <argument
+            android:name="habit_field2"
+            app:argType="string" />
+        <argument
+            android:name="habit_field3"
+            app:argType="string" />
     </fragment>
 </navigation>
