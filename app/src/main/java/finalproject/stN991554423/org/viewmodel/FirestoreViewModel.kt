@@ -211,14 +211,4 @@ class FirestoreViewModel : ViewModel() {
     }
 }
 
-//class FirestoreViewModelFactory(): ViewModelProvider.Factory{
-//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//        if(modelClass.isAssignableFrom(FirestoreViewModel::class.java)){
-//            @Suppress("UNCHECKED_CAST")
-//            return FirestoreViewModel() as T
-//        }
-//        throw IllegalAccessException("Unknown ViewModel class")
-//    }
-//
-//}
 

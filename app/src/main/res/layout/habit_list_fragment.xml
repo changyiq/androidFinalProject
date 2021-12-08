@@ -64,10 +64,10 @@
     <TextView
         android:id="@+id/habitAttr3Label"
         style="@style/Widget.HabitTracker.Header"
-        android:layout_width="95dp"
+        android:layout_width="115dp"
         android:layout_height="0dp"
         android:layout_below="@+id/habitAttr2Label"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:text="@string/habit_attr3"
         android:textAlignment="center"

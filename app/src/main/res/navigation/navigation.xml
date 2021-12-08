@@ -48,9 +48,6 @@
         android:label="fragment_habit_detail"
         tools:layout="@layout/fragment_habit_detail" >
         <action
-            android:id="@+id/action_habitDetailFragment_to_addHabitFragment"
-            app:destination="@id/addHabitFragment" />
-        <action
             android:id="@+id/action_habitDetailFragment_to_habitListFragment"
             app:destination="@id/habitListFragment" />
         <argument
@@ -74,6 +71,12 @@
         <action
             android:id="@+id/action_habitDetailFragment_to_helpFragment"
             app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_habitDetailFragment_to_helpFragment2"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_habitDetailFragment_to_MainFragment"
+            app:destination="@id/MainFragment" />
     </fragment>
     <fragment
         android:id="@+id/addHabitFragment"

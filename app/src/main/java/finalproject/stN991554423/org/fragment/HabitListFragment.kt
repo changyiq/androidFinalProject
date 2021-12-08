@@ -1,8 +1,8 @@
 package finalproject.stN991554423.org.fragment
 
 import android.annotation.SuppressLint
-import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -15,9 +15,6 @@ import finalproject.stN991554423.org.databinding.HabitListFragmentBinding
 import finalproject.stN991554423.org.recyclerView.*
 import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
 import finalproject.stN991554423.org.viewmodel.HabitListViewModel
-import android.content.pm.ActivityInfo
-
-import android.app.Activity
 
 const val TAG = "FIRESTORE"
 
@@ -31,6 +28,17 @@ class HabitListFragment : Fragment() {
     // with the backing property of the kotlin we extract
     // the non null value of the _binding
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+//        binding.habitAttr1Label.text = savedInstanceState?.getCharSequence("savedHabitAttr1")
+//        binding.habitAttr2Label.text = savedInstanceState?.getCharSequence("savedHabitAttr2")
+//        binding.habitAttr3Label.text = savedInstanceState?.getCharSequence("savedHabitAttr3")
+//        binding.tvViewList.text = savedInstanceState?.getCharSequence("savedHabitList")
+
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -200,7 +208,7 @@ class HabitListFragment : Fragment() {
                 true
             }
 
-            R.id.action_about->{
+            R.id.action_about -> {
                 displayAboutUs()
                 true
             }
@@ -237,6 +245,34 @@ class HabitListFragment : Fragment() {
 
     }
 
+    //make sure the app persistent (layout + data) upon rotation;
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.i(TAG, "onSaveInstanceState() was called")
+        val habitAttr1 = binding.habitAttr1Label.text
+        val habitAttr2 = binding.habitAttr2Label.text
+        val habitAttr3 = binding.habitAttr3Label.text
+        val habitList = binding.recyclerView.adapter
+        outState.putCharSequence("savedHabitAttr1", habitAttr1)
+        outState.putCharSequence("savedHabitAttr2", habitAttr2)
+        outState.putCharSequence("savedHabitAttr3", habitAttr3)
+        outState.putCharSequence("savedHabitList", habitList.toString())
+    }
+
+
+//    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+//        super.onViewStateRestored(savedInstanceState)
+//        Log.i(TAG, "onViewStateRestored() was called")
+//        val habitAttr1 = savedInstanceState?.getCharSequence("savedHabitAttr1")
+//        val habitAttr2 = savedInstanceState?.getCharSequence("savedHabitAttr2")
+//        val habitAttr3 = savedInstanceState?.getCharSequence("savedHabitAttr3")
+//        val habitList = savedInstanceState?.getCharSequence("savedHabitList")
+//
+//        binding.habitAttr1Label.text = habitAttr1
+//        binding.habitAttr2Label.text = habitAttr2
+//        binding.habitAttr3Label.text = habitAttr3
+//        binding.tvViewList.text = habitList
+//    }
 
 
 }

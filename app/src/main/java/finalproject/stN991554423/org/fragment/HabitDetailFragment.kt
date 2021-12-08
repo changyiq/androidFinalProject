@@ -209,7 +209,7 @@ class HabitDetailFragment : Fragment() {
                 true
             }
 
-            R.id.action_about->{
+            R.id.action_about -> {
                 displayAboutUs()
                 true
             }
@@ -224,24 +224,19 @@ class HabitDetailFragment : Fragment() {
     }
 
     private fun displayUserGuide() {
-        val action = AboutFragmentDirections.actionAboutFragmentToHelpFragment()
+        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToHelpFragment()
         this.findNavController().navigate(action)
     }
 
     private fun displayAboutUs() {
-        val action = HelpFragmentDirections.actionHelpFragmentToAboutFragment()
+        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToAboutFragment()
         this.findNavController().navigate(action)
     }
 
     fun logout() {
-        val action = HabitListFragmentDirections.actionHabitListFragmentToMainFragment()
+        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToMainFragment()
         this.findNavController().navigate(action)
         FirebaseAuth.getInstance().signOut()
     }
-
-//    fun checkList() {
-//        val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToHabitListFragment()
-//        this.findNavController().navigate(action)
-//    }
 }
 
