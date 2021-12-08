@@ -1,3 +1,9 @@
+/*
+    Date: December 5th, 2021
+    Name(s): Qingqing Wu(991500423), Yiqian Chang(991554674)
+    Description:Login fragment to display login page with user authentication
+ */
+
 package finalproject.stN991554423.org.fragment
 
 import android.app.Activity

@@ -1,3 +1,9 @@
+/*
+    Date: December 5th, 2021
+    Name(s): Qingqing Wu(991500423), Yiqian Chang(991554674)
+    Description:The about fragment that shows users the programmers' information
+ */
+
 package finalproject.stN991554423.org.fragment
 
 import android.os.Bundle
@@ -48,16 +54,19 @@ class AboutFragment : Fragment() {
         }
     }
 
+    // navigation to HabitListFragment
     private fun displayHabitList() {
         val action = AboutFragmentDirections.actionAboutFragmentToHabitListFragment()
         this.findNavController().navigate(action)
     }
 
+    // navigation to HelpFragment
     private fun displayUserGuide() {
         val action = AboutFragmentDirections.actionAboutFragmentToHelpFragment()
         this.findNavController().navigate(action)
     }
 
+    // sign out from the app
     private fun logout() {
         val action = HabitListFragmentDirections.actionHabitListFragmentToMainFragment()
         this.findNavController().navigate(action)

@@ -1,3 +1,9 @@
+/*
+    Date: December 5th, 2021
+    Name(s): Qingqing Wu(991500423), Yiqian Chang(991554674)
+    Description:Main fragment of displaying our welcome page
+ */
+
 package finalproject.stN991554423.org.fragment
 
 import android.app.Activity
@@ -79,14 +85,6 @@ class MainFragment : Fragment() {
                     val action = MainFragmentDirections.actionMainFragmentToHabitListFragment(
                     )
                     this.findNavController().navigate(action)
-//                    binding.welcomeText.text = getQuoteWithPersonalization(quoteToDisplay)
-//
-//                    binding.authButton.text = getString(R.string.view_list_button_text)
-//                    binding.authButton.setOnClickListener {
-//                        val action = MainFragmentDirections.actionMainFragmentToHabitListFragment(
-//                        )
-//                        this.findNavController().navigate(action)
-//                    }
                 }   // If there is no logged in user: show a login button
                 else -> {
                     binding.welcomeText.text = quoteToDisplay
@@ -98,16 +96,6 @@ class MainFragment : Fragment() {
             }
         })
     }
-
-//    private fun getQuoteWithPersonalization(quote: String): String {
-//        return String.format(
-//            resources.getString(
-//                R.string.welcome_message_authed,
-//                FirebaseAuth.getInstance().currentUser?.displayName,
-//                quote.substring(0)
-//            )
-//        )
-//    }
 
     private fun launchSignInFlow() {
         // Give users the option to sign in / register with their email

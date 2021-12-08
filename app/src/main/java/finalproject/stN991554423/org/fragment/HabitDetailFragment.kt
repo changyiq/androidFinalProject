@@ -1,3 +1,10 @@
+/*
+    Date: December 5th, 2021
+    Name(s): Qingqing Wu(991500423), Yiqian Chang(991554674)
+    Description:HabitDetailFragment fragment is to show user the detail info about their habit after they
+                click on one the the habit item. on the page, we also offer user edit and delete functions
+ */
+
 package finalproject.stN991554423.org.fragment
 
 import android.os.Bundle
@@ -170,6 +177,7 @@ class HabitDetailFragment : Fragment() {
             .show()
     }
 
+    // use to retrieve detail data from user click based on the item id
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -228,16 +236,19 @@ class HabitDetailFragment : Fragment() {
         }
     }
 
+    // navigation to HelpFragment
     private fun displayUserGuide() {
         val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToHelpFragment()
         this.findNavController().navigate(action)
     }
 
+    // navigation to AboutFragment
     private fun displayAboutUs() {
         val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToAboutFragment()
         this.findNavController().navigate(action)
     }
 
+    // sign out from the app
     private fun logout() {
         val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToMainFragment()
         this.findNavController().navigate(action)

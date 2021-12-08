@@ -72,7 +72,7 @@
     <string name="user_guide_content">"Click  the "+" button to record a habit. \n\nClick buttons on the top to select habit, it will display all the habit history accordingly. \n\nClick each history log to edit and update the information."</string>
 
     <!---about fragment -->
-    <string name="developer_intro">This project is developed by \n\nQingqing Wu (991554423) \n\nYiqian Chang (991554674) \n\n 2021-12-09</string>
+    <string name="developer_intro">This project is developed by \n\nQingqing Wu (991500423) \n\nYiqian Chang (991554674) \n\n 2021-12-09</string>
 
     <!--- menu options -->
     <string name="about_us">About us</string>

@@ -1,3 +1,9 @@
+/*
+    Date: December 5th, 2021
+    Name(s): Qingqing Wu(991500423), Yiqian Chang(991554674)
+    Description:Class to hold the firebaseUser as livedata
+ */
+
 package finalproject.stN991554423.org.data
 
 import com.google.firebase.auth.FirebaseUser

@@ -1,3 +1,9 @@
+/*
+    Date: December 5th, 2021
+    Name(s): Qingqing Wu(991500423), Yiqian Chang(991554674)
+    Description:The help fragment that show users the hint on how to use our app
+ */
+
 package finalproject.stN991554423.org.fragment
 
 import android.os.Bundle
@@ -46,16 +52,19 @@ class HelpFragment : Fragment() {
         }
     }
 
+    // navigation to HabitListFragment
     private fun displayHabitList() {
         val action = HelpFragmentDirections.actionHelpFragmentToHabitListFragment()
         this.findNavController().navigate(action)
     }
 
+    // navigation to AboutFragment
     private fun displayAboutUs() {
         val action = HelpFragmentDirections.actionHelpFragmentToAboutFragment()
         this.findNavController().navigate(action)
     }
 
+    // sign out from the app
     private fun logout() {
         val action = HabitListFragmentDirections.actionHabitListFragmentToMainFragment()
         this.findNavController().navigate(action)

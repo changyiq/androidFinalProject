@@ -1,9 +1,15 @@
+/*
+    Date: December 5th, 2021
+    Name(s): Qingqing Wu(991500423), Yiqian Chang(991554674)
+    Description:HabitListFragment fragment is to display our habits list in the recycler view based on the habit
+                type. on this page, we also offer user add function
+ */
+
 package finalproject.stN991554423.org.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Parcelable
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -49,8 +55,10 @@ class HabitListFragment : Fragment() {
 //            binding.tvViewList.visibility = savedInstanceState.getInt("viewTextView")
 //        }
 
+        // has menu
         setHasOptionsMenu(true)
 
+        // set up recyclerView
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
 
@@ -227,16 +235,19 @@ class HabitListFragment : Fragment() {
         }
     }
 
+    // navigation to AboutFragment
     private fun displayAboutUs() {
         val action = HabitListFragmentDirections.actionHabitListFragmentToAboutFragment()
         this.findNavController().navigate(action)
     }
 
+    // navigation to HelpFragment
     private fun displayUserGuide() {
         val action = HabitListFragmentDirections.actionHabitListFragmentToHelpFragment()
         this.findNavController().navigate(action)
     }
 
+    // sign out from the app
     private fun logout() {
         val action = HabitListFragmentDirections.actionHabitListFragmentToMainFragment()
 

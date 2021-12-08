@@ -1,3 +1,9 @@
+/*
+    Date: December 5th, 2021
+    Name(s): Qingqing Wu(991500423), Yiqian Chang(991554674)
+    Description:This the login view model which to check user authentication
+ */
+
 package finalproject.stN991554423.org.viewmodel
 
 import android.content.Context

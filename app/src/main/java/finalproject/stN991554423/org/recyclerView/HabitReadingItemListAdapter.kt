@@ -1,3 +1,9 @@
+/*
+    Date: December 5th, 2021
+    Name(s): Qingqing Wu(991500423), Yiqian Chang(991554674)
+    Description:RecyclerView Adapter class to hold each cardView value of the list from reading habit collection, and also perform the item click event
+ */
+
 package finalproject.stN991554423.org.recyclerView
 
 import android.view.LayoutInflater
