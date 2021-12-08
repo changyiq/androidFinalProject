@@ -10,6 +10,7 @@ import kotlin.random.Random
 
 class LoginViewModel : ViewModel() {
 
+    // some encouragement quotes will display on login page
     companion object {
         val encouragementQuotes = arrayOf(
             "Everything you need to accomplish your goals is already in you.",

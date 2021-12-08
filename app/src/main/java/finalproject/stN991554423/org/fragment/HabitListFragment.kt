@@ -2,7 +2,6 @@ package finalproject.stN991554423.org.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.Parcel
 import android.os.Parcelable
 import android.util.Log
 import android.view.*
@@ -11,7 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import finalproject.stN991554423.org.R
 import finalproject.stN991554423.org.databinding.HabitListFragmentBinding
@@ -43,15 +41,13 @@ class HabitListFragment : Fragment() {
     ): View? {
         _binding = HabitListFragmentBinding.inflate(inflater, container, false)
 
-
-
-        if (savedInstanceState != null) {
-            binding.habitAttr1Label.text = savedInstanceState.getCharSequence("savedHabitAttr1")
-            binding.habitAttr2Label.text = savedInstanceState.getCharSequence("savedHabitAttr2")
-            binding.habitAttr3Label.text = savedInstanceState.getCharSequence("savedHabitAttr3")
-            binding.recyclerView.layoutManager?.onSaveInstanceState()
-            binding.tvViewList.visibility = savedInstanceState.getInt("viewTextView")
-        }
+//        if (savedInstanceState != null) {
+//            binding.habitAttr1Label.text = savedInstanceState.getCharSequence("savedHabitAttr1")
+//            binding.habitAttr2Label.text = savedInstanceState.getCharSequence("savedHabitAttr2")
+//            binding.habitAttr3Label.text = savedInstanceState.getCharSequence("savedHabitAttr3")
+//            binding.recyclerView.layoutManager?.onSaveInstanceState()
+//            binding.tvViewList.visibility = savedInstanceState.getInt("viewTextView")
+//        }
 
         setHasOptionsMenu(true)
 
@@ -209,6 +205,7 @@ class HabitListFragment : Fragment() {
         inflater.inflate(R.menu.habit_menu, menu)
     }
 
+    // menu options
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_help -> {
@@ -240,7 +237,7 @@ class HabitListFragment : Fragment() {
         this.findNavController().navigate(action)
     }
 
-    fun logout() {
+    private fun logout() {
         val action = HabitListFragmentDirections.actionHabitListFragmentToMainFragment()
 
         this.findNavController().navigate(action)
@@ -254,22 +251,20 @@ class HabitListFragment : Fragment() {
     }
 
     //make sure the app persistent (layout + data) upon rotation;
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        Log.i(TAG, "onSaveInstanceState() was called")
-        val habitAttr1 = binding.habitAttr1Label.text
-        val habitAttr2 = binding.habitAttr2Label.text
-        val habitAttr3 = binding.habitAttr3Label.text
-        val listState: Parcelable? = binding.recyclerView.layoutManager?.onSaveInstanceState()
-
-        outState.putCharSequence("savedHabitAttr1", habitAttr1)
-        outState.putCharSequence("savedHabitAttr2", habitAttr2)
-        outState.putCharSequence("savedHabitAttr3", habitAttr3)
-        outState.putParcelable("savedHabitList", listState)
-        outState.putInt("viewTextView", binding.tvViewList.visibility)
-    }
-
-
+//    override fun onSaveInstanceState(outState: Bundle) {
+//        super.onSaveInstanceState(outState)
+//        Log.i(TAG, "onSaveInstanceState() was called")
+//        val habitAttr1 = binding.habitAttr1Label.text
+//        val habitAttr2 = binding.habitAttr2Label.text
+//        val habitAttr3 = binding.habitAttr3Label.text
+//        val listState: Parcelable? = binding.recyclerView.layoutManager?.onSaveInstanceState()
+//
+//        outState.putCharSequence("savedHabitAttr1", habitAttr1)
+//        outState.putCharSequence("savedHabitAttr2", habitAttr2)
+//        outState.putCharSequence("savedHabitAttr3", habitAttr3)
+//        outState.putParcelable("savedHabitList", listState)
+//        outState.putInt("viewTextView", binding.tvViewList.visibility)
+//    }
 
 }
 

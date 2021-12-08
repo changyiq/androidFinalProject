@@ -18,6 +18,7 @@ class AboutFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // add options menu
         setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_about, container, false)
     }
@@ -26,6 +27,7 @@ class AboutFragment : Fragment() {
         inflater.inflate(R.menu.about_menu, menu)
     }
 
+    // menu options
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_display_list -> {
@@ -56,11 +58,9 @@ class AboutFragment : Fragment() {
         this.findNavController().navigate(action)
     }
 
-    fun logout() {
+    private fun logout() {
         val action = HabitListFragmentDirections.actionHabitListFragmentToMainFragment()
         this.findNavController().navigate(action)
         FirebaseAuth.getInstance().signOut()
     }
-
-
 }

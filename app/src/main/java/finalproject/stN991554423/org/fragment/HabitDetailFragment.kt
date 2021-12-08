@@ -40,6 +40,7 @@ class HabitDetailFragment : Fragment() {
         return binding.root
     }
 
+    //------------------binding properties, display different images and data fields----------------//
     private fun habitDrinkingBind() {
         binding.apply {
             imageView.setImageResource(R.drawable.water)
@@ -136,6 +137,7 @@ class HabitDetailFragment : Fragment() {
         }
     }
 
+    // edit habit
     private fun editHabitItem() {
         Log.e("ID:", navigationArgs.habitId)
         val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToEditHabitFragment(
@@ -147,6 +149,7 @@ class HabitDetailFragment : Fragment() {
         this.findNavController().navigate(action)
     }
 
+    // delete habit
     private fun deleteHabitItem() {
         Log.e("ID:", navigationArgs.habitId)
         firestoreViewModel.deleteHabitDoc(habitId = navigationArgs.habitId)
@@ -154,6 +157,7 @@ class HabitDetailFragment : Fragment() {
         this.findNavController().navigate(action)
     }
 
+    // show confirmation dialog when click delete button
     private fun showConfirmationDialog() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(android.R.string.dialog_alert_title))
@@ -202,6 +206,7 @@ class HabitDetailFragment : Fragment() {
         inflater.inflate(R.menu.habit_menu, menu)
     }
 
+    // menu options
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_help -> {
@@ -233,7 +238,7 @@ class HabitDetailFragment : Fragment() {
         this.findNavController().navigate(action)
     }
 
-    fun logout() {
+    private fun logout() {
         val action = HabitDetailFragmentDirections.actionHabitDetailFragmentToMainFragment()
         this.findNavController().navigate(action)
         FirebaseAuth.getInstance().signOut()

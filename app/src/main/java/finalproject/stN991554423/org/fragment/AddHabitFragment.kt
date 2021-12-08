@@ -3,15 +3,14 @@ package finalproject.stN991554423.org.fragment
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import finalproject.stN991554423.org.R
 import finalproject.stN991554423.org.data.*
 import finalproject.stN991554423.org.databinding.FragmentAddHabitBinding
@@ -27,7 +26,6 @@ class AddHabitFragment() : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -110,61 +108,90 @@ class AddHabitFragment() : Fragment() {
                 }
 
             }
-
         }
 
         // save data into firestore
         binding.saveAction.setOnClickListener {
 
-            if (type == "Run") {
+            if (type == "Run" && !inputField1.text.isNullOrEmpty() && !inputField2.text.isNullOrEmpty() && !inputField3.text.isNullOrEmpty()) {
                 val habitRun = HabitRun()
-                habitRun.runDate = inputField1.text.toString()
-                habitRun.runTime = inputField2.text.toString()
+                habitRun.runDate = inputField1.text.toString().format()
+                habitRun.runTime = inputField2.text.toString().format()
                 habitRun.runDistance = inputField3.text.toString().toDouble()
                 habitRun.id = (0..10000000).random().toString()
                 firestoreViewModel.saveRunToFirebase(habitRun)
-            } else if (type == "Meditation") {
+                val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment()
+                this.findNavController().navigate(action)
+            } else {
+                Toast.makeText(activity, "Please input valid data", Toast.LENGTH_SHORT).show();
+            }
+
+            if (type == "Meditation" && !inputField1.text.isNullOrEmpty() && !inputField2.text.isNullOrEmpty() && !inputField3.text.isNullOrEmpty()) {
                 val habitMeditation = HabitMeditation()
-                habitMeditation.meditationDate = inputField1.text.toString()
-                habitMeditation.meditationTime = inputField2.text.toString()
+                habitMeditation.meditationDate = inputField1.text.toString().format()
+                habitMeditation.meditationTime = inputField2.text.toString().format()
                 habitMeditation.meditationDuration = inputField3.text.toString().toDouble()
                 habitMeditation.id = (10000001..20000000).random().toString()
                 firestoreViewModel.saveMeditationToFirebase(habitMeditation)
-            } else if (type == "Reading") {
+                val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment()
+                this.findNavController().navigate(action)
+            } else {
+                Toast.makeText(activity, "Please input valid data", Toast.LENGTH_SHORT).show();
+            }
+
+            if (type == "Reading" && !inputField1.text.isNullOrEmpty() && !inputField2.text.isNullOrEmpty() && !inputField3.text.isNullOrEmpty()) {
                 val habitReading = HabitReading()
-                habitReading.readingDate = inputField1.text.toString()
-                habitReading.readingTime = inputField2.text.toString()
+                habitReading.readingDate = inputField1.text.toString().format()
+                habitReading.readingTime = inputField2.text.toString().format()
                 habitReading.readingDuration = inputField3.text.toString().toDouble()
                 habitReading.id = (20000001..30000000).random().toString()
                 firestoreViewModel.saveReadingToFirebase(habitReading)
-            } else if (type == "Sleep") {
+                val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment()
+                this.findNavController().navigate(action)
+            } else {
+                Toast.makeText(activity, "Please input valid data", Toast.LENGTH_SHORT).show();
+            }
+
+            if (type == "Sleep" && !inputField1.text.isNullOrEmpty() && !inputField2.text.isNullOrEmpty() && !inputField3.text.isNullOrEmpty()) {
                 val habitSleep = HabitSleep()
-                habitSleep.sleepDate = inputField1.text.toString()
-                habitSleep.sleepTime = inputField2.text.toString()
+                habitSleep.sleepDate = inputField1.text.toString().format()
+                habitSleep.sleepTime = inputField2.text.toString().format()
                 habitSleep.sleepDuration = inputField3.text.toString().toDouble()
                 habitSleep.id = (30000001..40000000).random().toString()
                 firestoreViewModel.saveSleepToFirebase(habitSleep)
-            } else if (type == "Drinking") {
+                val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment()
+                this.findNavController().navigate(action)
+            } else {
+                Toast.makeText(activity, "Please input valid data", Toast.LENGTH_SHORT).show();
+            }
+
+            if (type == "Drinking" && !inputField1.text.isNullOrEmpty() && !inputField2.text.isNullOrEmpty() && !inputField3.text.isNullOrEmpty()) {
                 val habitDrinking = HabitDrinking()
-                habitDrinking.drinkingDate = inputField1.text.toString()
+                habitDrinking.drinkingDate = inputField1.text.toString().format()
                 habitDrinking.drinkingFrequency = inputField2.text.toString().toInt()
                 habitDrinking.drinkingConsumption = inputField3.text.toString().toDouble()
                 habitDrinking.id = (40000001..50000000).random().toString()
                 firestoreViewModel.saveDrinkingToFirebase(habitDrinking)
+                val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment()
+                this.findNavController().navigate(action)
+            } else {
+                Toast.makeText(activity, "Please input valid data", Toast.LENGTH_SHORT).show();
 
-            } else if (type == "Yoga") {
+            }
+
+            if (type == "Yoga" && !inputField1.text.isNullOrEmpty() && !inputField2.text.isNullOrEmpty() && !inputField3.text.isNullOrEmpty()) {
                 val habitYoga = HabitYoga()
-                habitYoga.yogaDate = inputField1.text.toString()
-                habitYoga.yogaTime = inputField2.text.toString()
+                habitYoga.yogaDate = inputField1.text.toString().format()
+                habitYoga.yogaTime = inputField2.text.toString().format()
                 habitYoga.yogaDuration = inputField3.text.toString().toDouble()
                 habitYoga.id = (50000001..60000000).random().toString()
                 firestoreViewModel.saveYogaToFirebase(habitYoga)
+                val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment()
+                this.findNavController().navigate(action)
+            } else {
+                Toast.makeText(activity, "Please input valid data", Toast.LENGTH_SHORT).show();
             }
-            val action = AddHabitFragmentDirections.actionAddHabitFragmentToHabitListFragment()
-            // navigate back to list fragment
-            this.findNavController().navigate(action)
         }
-
     }
 
     /**

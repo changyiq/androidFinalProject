@@ -14,7 +14,6 @@ class FirestoreRepository {
     var firestoreDB = FirebaseFirestore.getInstance()
     var user = FirebaseAuth.getInstance().currentUser
 
-
     //----------------------------add to collection----------------------------------------------//
     // save habitDrinking to firebase
     fun saveNewDrinking(eventHabitDrinking: HabitDrinking): Task<*> {
