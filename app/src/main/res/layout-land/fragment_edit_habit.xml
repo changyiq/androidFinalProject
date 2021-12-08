@@ -19,7 +19,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.AddHabitFragment">
+    tools:context=".fragment.EditHabitFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -43,12 +43,13 @@
                 android:layout_weight="1"
                 android:text="Habit Type" />
 
-            <Spinner
-                android:id="@+id/habit_type"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
                 android:layout_weight="1"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                android:text="TextView" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -64,7 +65,7 @@
                 android:id="@+id/habitAttr1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="date|numberDecimal"
+                android:inputType="numberDecimal"
                 android:singleLine="true"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -85,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:inputType="number|time"
+                android:inputType="number"
                 android:singleLine="true"
                 tools:ignore="SpeakableTextPresentCheck" />
 

@@ -24,15 +24,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin">
+        android:layout_margin="10dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/habit_type_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin"
+            android:layout_marginTop="4dp"
             android:hint="Habit Type Select..."
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -126,8 +127,8 @@
 
         <TextView
             android:id="@+id/tv_attr_1"
-            android:layout_width="374dp"
-            android:layout_height="29dp"
+            android:layout_width="660dp"
+            android:layout_height="22dp"
             android:layout_weight="1"
             android:text="Date"
             app:layout_constraintBottom_toTopOf="@+id/habitAttr1Label"

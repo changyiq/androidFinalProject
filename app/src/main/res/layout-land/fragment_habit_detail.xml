@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin"
+    tools:context=".fragment.HabitDetailFragment">
+
+
+    <TextView
+        android:id="@+id/habit_name"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="213dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:text="Exercise" />
+
+    <TextView
+        android:id="@+id/habit_attr1_label"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="126dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/habit_name"
+        tools:text="@string/habit_date" />
+
+    <TextView
+        android:id="@+id/habit_attr2_label"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="126dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/habit_time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/habit_attr1_label" />
+
+    <TextView
+        android:id="@+id/habit_attr3_label"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="126dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/habit_attr2_label"
+        tools:text="other" />
+
+
+    <TextView
+        android:id="@+id/habit_attr1"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="225dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintStart_toEndOf="@+id/habit_attr1_label"
+        app:layout_constraintTop_toBottomOf="@+id/habit_name"
+        tools:text="2021-11-20" />
+
+    <TextView
+        android:id="@+id/habit_attr2"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="225dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintStart_toEndOf="@+id/habit_attr2_label"
+        app:layout_constraintTop_toBottomOf="@+id/habit_attr1_label"
+
+        tools:text="22:33:00" />
+
+    <TextView
+        android:id="@+id/habit_attr3"
+        style="@style/Widget.HabitTracker.TextView"
+        android:layout_width="225dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/habit_attr3_label"
+        app:layout_constraintTop_toBottomOf="@+id/habit_attr2"
+        tools:text="@string/habit_attr1" />
+
+    <Button
+        android:id="@+id/delete_habit"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="147dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="128dp"
+        android:text="@string/delete_habit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/habit_attr2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/edit_habit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@string/edit_habit"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.921"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@android:color/white"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="234dp"
+        android:layout_height="63dp"
+        android:contentDescription="TODO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fui_ic_check_circle_black_128dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
