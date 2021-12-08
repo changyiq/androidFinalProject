@@ -2,6 +2,8 @@ package finalproject.stN991554423.org.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -9,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import finalproject.stN991554423.org.R
 import finalproject.stN991554423.org.databinding.HabitListFragmentBinding
@@ -31,12 +34,6 @@ class HabitListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-//        binding.habitAttr1Label.text = savedInstanceState?.getCharSequence("savedHabitAttr1")
-//        binding.habitAttr2Label.text = savedInstanceState?.getCharSequence("savedHabitAttr2")
-//        binding.habitAttr3Label.text = savedInstanceState?.getCharSequence("savedHabitAttr3")
-//        binding.tvViewList.text = savedInstanceState?.getCharSequence("savedHabitList")
-
     }
 
 
@@ -45,6 +42,17 @@ class HabitListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = HabitListFragmentBinding.inflate(inflater, container, false)
+
+
+
+        if (savedInstanceState != null) {
+            binding.habitAttr1Label.text = savedInstanceState.getCharSequence("savedHabitAttr1")
+            binding.habitAttr2Label.text = savedInstanceState.getCharSequence("savedHabitAttr2")
+            binding.habitAttr3Label.text = savedInstanceState.getCharSequence("savedHabitAttr3")
+            binding.recyclerView.layoutManager?.onSaveInstanceState()
+            binding.tvViewList.visibility = savedInstanceState.getInt("viewTextView")
+        }
+
         setHasOptionsMenu(true)
 
         binding.recyclerView.setHasFixedSize(true)
@@ -252,30 +260,19 @@ class HabitListFragment : Fragment() {
         val habitAttr1 = binding.habitAttr1Label.text
         val habitAttr2 = binding.habitAttr2Label.text
         val habitAttr3 = binding.habitAttr3Label.text
-        val habitList = binding.recyclerView.adapter
+        val listState: Parcelable? = binding.recyclerView.layoutManager?.onSaveInstanceState()
+
         outState.putCharSequence("savedHabitAttr1", habitAttr1)
         outState.putCharSequence("savedHabitAttr2", habitAttr2)
         outState.putCharSequence("savedHabitAttr3", habitAttr3)
-        outState.putCharSequence("savedHabitList", habitList.toString())
+        outState.putParcelable("savedHabitList", listState)
+        outState.putInt("viewTextView", binding.tvViewList.visibility)
     }
 
 
-//    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-//        super.onViewStateRestored(savedInstanceState)
-//        Log.i(TAG, "onViewStateRestored() was called")
-//        val habitAttr1 = savedInstanceState?.getCharSequence("savedHabitAttr1")
-//        val habitAttr2 = savedInstanceState?.getCharSequence("savedHabitAttr2")
-//        val habitAttr3 = savedInstanceState?.getCharSequence("savedHabitAttr3")
-//        val habitList = savedInstanceState?.getCharSequence("savedHabitList")
-//
-//        binding.habitAttr1Label.text = habitAttr1
-//        binding.habitAttr2Label.text = habitAttr2
-//        binding.habitAttr3Label.text = habitAttr3
-//        binding.tvViewList.text = habitList
-//    }
-
 
 }
+
 
 
 

@@ -90,8 +90,8 @@
 
     <TextView
         android:id="@+id/tvViewList"
-        android:layout_width="533dp"
-        android:layout_height="182dp"
+        android:layout_width="642dp"
+        android:layout_height="203dp"
         android:lineSpacingExtra="16sp"
         android:text="@string/viewList"
         android:textAlignment="center"
