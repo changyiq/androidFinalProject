@@ -10,10 +10,8 @@ package finalproject.stN991554423.org.data
 import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.QuerySnapshot
 
 
 class FirestoreRepository {
@@ -71,33 +69,51 @@ class FirestoreRepository {
 
     //----------------------------retrieve collection--------------------------------------------//
     // get saved habitDrinking from firebase
-    fun getDrinkingCollection(): Query{
-        return firestoreDB.collection("HabitDrinking").orderBy("drinkingDate", Query.Direction.DESCENDING)
+    fun getDrinkingCollection(): Query {
+        return firestoreDB.collection("HabitDrinking")
+            .orderBy("drinkingDate", Query.Direction.DESCENDING)
+            .orderBy("drinkingDate", Query.Direction.DESCENDING)
+            .orderBy("drinkingFrequency", Query.Direction.DESCENDING)
     }
 
     // get saved habitMeditation from firebase
     fun getMeditationCollection(): Query {
-        return firestoreDB.collection("HabitMeditation").orderBy("meditationDate", Query.Direction.DESCENDING)
+        return firestoreDB.collection("HabitMeditation")
+            .orderBy("meditationDate", Query.Direction.DESCENDING)
+            .orderBy("meditationTime", Query.Direction.DESCENDING)
+            .orderBy("meditationDuration", Query.Direction.DESCENDING)
     }
 
     // get saved habitReading from firebase
     fun getReadingCollection(): Query {
-        return firestoreDB.collection("HabitReading").orderBy("readingDate", Query.Direction.DESCENDING)
+        return firestoreDB.collection("HabitReading")
+            .orderBy("readingDate", Query.Direction.DESCENDING)
+            .orderBy("readingTime", Query.Direction.DESCENDING)
+            .orderBy("readingDuration", Query.Direction.DESCENDING)
     }
 
     // // get saved habitRun from firebase
     fun getRunCollection(): Query {
-        return firestoreDB.collection("HabitRun").orderBy("runDate", Query.Direction.DESCENDING)
+        return firestoreDB.collection("HabitRun")
+            .orderBy("runDate", Query.Direction.DESCENDING)
+            .orderBy("runTime", Query.Direction.DESCENDING)
+            .orderBy("runDistance", Query.Direction.DESCENDING)
     }
 
     // get saved habitSleep from firebase
     fun getSleepCollection(): Query {
-        return firestoreDB.collection("HabitSleep").orderBy("sleepDate", Query.Direction.DESCENDING)
+        return firestoreDB.collection("HabitSleep")
+            .orderBy("sleepDate", Query.Direction.DESCENDING)
+            .orderBy("sleepTime", Query.Direction.DESCENDING)
+            .orderBy("sleepDuration", Query.Direction.DESCENDING)
     }
 
     // get saved habitYoga from firebase
     fun getYogaCollection(): Query {
-        return firestoreDB.collection("HabitYoga").orderBy("yogaDate", Query.Direction.DESCENDING)
+        return firestoreDB.collection("HabitYoga")
+            .orderBy("yogaDate", Query.Direction.DESCENDING)
+            .orderBy("yogaTime", Query.Direction.DESCENDING)
+            .orderBy("yogaDuration", Query.Direction.DESCENDING)
     }
 
     //----------------------------update document----------------------------------------------//
