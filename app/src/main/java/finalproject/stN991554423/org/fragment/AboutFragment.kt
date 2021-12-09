@@ -68,7 +68,7 @@ class AboutFragment : Fragment() {
 
     // sign out from the app
     private fun logout() {
-        val action = HabitListFragmentDirections.actionHabitListFragmentToMainFragment()
+        val action = AboutFragmentDirections.actionAboutFragmentToMainFragment()
         this.findNavController().navigate(action)
         FirebaseAuth.getInstance().signOut()
     }
