@@ -22,6 +22,9 @@ import finalproject.stN991554423.org.databinding.HabitListFragmentBinding
 import finalproject.stN991554423.org.recyclerView.*
 import finalproject.stN991554423.org.viewmodel.FirestoreViewModel
 import finalproject.stN991554423.org.viewmodel.HabitListViewModel
+import android.content.pm.ActivityInfo
+
+import android.app.Activity
 
 const val TAG = "FIRESTORE"
 
