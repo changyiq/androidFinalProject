@@ -12,6 +12,8 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QuerySnapshot
 
 
 class FirestoreRepository {
@@ -69,33 +71,33 @@ class FirestoreRepository {
 
     //----------------------------retrieve collection--------------------------------------------//
     // get saved habitDrinking from firebase
-    fun getDrinkingCollection(): CollectionReference {
-        return firestoreDB.collection("HabitDrinking")
+    fun getDrinkingCollection(): Query{
+        return firestoreDB.collection("HabitDrinking").orderBy("drinkingDate", Query.Direction.DESCENDING)
     }
 
     // get saved habitMeditation from firebase
-    fun getMeditationCollection(): CollectionReference {
-        return firestoreDB.collection("HabitMeditation")
+    fun getMeditationCollection(): Query {
+        return firestoreDB.collection("HabitMeditation").orderBy("meditationDate", Query.Direction.DESCENDING)
     }
 
     // get saved habitReading from firebase
-    fun getReadingCollection(): CollectionReference {
-        return firestoreDB.collection("HabitReading")
+    fun getReadingCollection(): Query {
+        return firestoreDB.collection("HabitReading").orderBy("readingDate", Query.Direction.DESCENDING)
     }
 
     // // get saved habitRun from firebase
-    fun getRunCollection(): CollectionReference {
-        return firestoreDB.collection("HabitRun")
+    fun getRunCollection(): Query {
+        return firestoreDB.collection("HabitRun").orderBy("runDate", Query.Direction.DESCENDING)
     }
 
     // get saved habitSleep from firebase
-    fun getSleepCollection(): CollectionReference {
-        return firestoreDB.collection("HabitSleep")
+    fun getSleepCollection(): Query {
+        return firestoreDB.collection("HabitSleep").orderBy("sleepDate", Query.Direction.DESCENDING)
     }
 
     // get saved habitYoga from firebase
-    fun getYogaCollection(): CollectionReference {
-        return firestoreDB.collection("HabitYoga")
+    fun getYogaCollection(): Query {
+        return firestoreDB.collection("HabitYoga").orderBy("yogaDate", Query.Direction.DESCENDING)
     }
 
     //----------------------------update document----------------------------------------------//
