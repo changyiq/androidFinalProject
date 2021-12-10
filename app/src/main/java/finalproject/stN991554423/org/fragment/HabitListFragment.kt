@@ -50,14 +50,6 @@ class HabitListFragment : Fragment() {
     ): View? {
         _binding = HabitListFragmentBinding.inflate(inflater, container, false)
 
-//        if (savedInstanceState != null) {
-//            binding.habitAttr1Label.text = savedInstanceState.getCharSequence("savedHabitAttr1")
-//            binding.habitAttr2Label.text = savedInstanceState.getCharSequence("savedHabitAttr2")
-//            binding.habitAttr3Label.text = savedInstanceState.getCharSequence("savedHabitAttr3")
-//            binding.recyclerView.layoutManager?.onSaveInstanceState()
-//            binding.tvViewList.visibility = savedInstanceState.getInt("viewTextView")
-//        }
-
         // has menu
         setHasOptionsMenu(true)
 
@@ -263,22 +255,6 @@ class HabitListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HabitListViewModel::class.java)
 
     }
-
-    //make sure the app persistent (layout + data) upon rotation;
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        super.onSaveInstanceState(outState)
-//        Log.i(TAG, "onSaveInstanceState() was called")
-//        val habitAttr1 = binding.habitAttr1Label.text
-//        val habitAttr2 = binding.habitAttr2Label.text
-//        val habitAttr3 = binding.habitAttr3Label.text
-//        val listState: Parcelable? = binding.recyclerView.layoutManager?.onSaveInstanceState()
-//
-//        outState.putCharSequence("savedHabitAttr1", habitAttr1)
-//        outState.putCharSequence("savedHabitAttr2", habitAttr2)
-//        outState.putCharSequence("savedHabitAttr3", habitAttr3)
-//        outState.putParcelable("savedHabitList", listState)
-//        outState.putInt("viewTextView", binding.tvViewList.visibility)
-//    }
 
 }
 
